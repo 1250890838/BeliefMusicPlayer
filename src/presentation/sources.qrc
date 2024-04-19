@@ -1,0 +1,40 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/close.svg</file>
+        <file>images/icon.svg</file>
+        <file>images/maximize.svg</file>
+        <file>images/minimize.svg</file>
+        <file>images/restore.svg</file>
+        <file>qml/Main.qml</file>
+        <file>qml/SideBar.qml</file>
+        <file>qml/modules/CustomComponents/qmldir</file>
+        <file>qml/modules/CustomComponents/CButton.qml</file>
+        <file>qml/TitleBar.qml</file>
+        <file>qml/StyleSheet.qml</file>
+        <file>qml/IconSheet.qml</file>
+        <file>qml/FontSheet.qml</file>
+        <file>qml/SideBarItem.qml</file>
+        <file>images/community.svg</file>
+        <file>images/downloadManager.svg</file>
+        <file>images/favorite.svg</file>
+        <file>images/localMusic.svg</file>
+        <file>images/Podcasts.svg</file>
+        <file>images/recent.svg</file>
+        <file>images/store.svg</file>
+        <file>qml/PageNavigationLogic.js</file>
+        <file>qml/communityPage/CommunityPage.qml</file>
+        <file>qml/downloadManagerPage/DownloadManagerPage.qml</file>
+        <file>qml/favoritePage/FavoritePage.qml</file>
+        <file>qml/localMusicPage/LocalMusicPage.qml</file>
+        <file>qml/podcastPage/PodcastPage.qml</file>
+        <file>qml/recentPage/RecentPage.qml</file>
+        <file>qml/storePage/StorePage.qml</file>
+        <file>images/communitySelected.svg</file>
+        <file>images/downloadManagerSelected.svg</file>
+        <file>images/favoriteSelected.svg</file>
+        <file>images/localMusicSelected.svg</file>
+        <file>images/PodcastsSelected.svg</file>
+        <file>images/recentSelected.svg</file>
+        <file>images/storeSelected.svg</file>
+    </qresource>
+</RCC>
