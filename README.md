@@ -1,2 +1,4 @@
-![BeliefMeidaPlayer](https://github.com/1250890838/BeliefMusicPlayer/assets/57135698/ccd76c09-0a92-4c0a-97d0-3c4c892595c7)
+![QQ截图20240418163134](https://github.com/1250890838/BeliefMusicPlayer/assets/57135698/bc95139d-ef8a-40bf-9f1e-2124601975fb)
 先做UI
+
+
