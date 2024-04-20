@@ -15,4 +15,6 @@ Item {
 
     property color colorSideBarItemSelectedText:"#FFFFFF"
     property color colorSideBarItemText:"#576071"
+
+    property color colorTitlebarButtonBorder:"#E2E5E9"
 }

@@ -7,6 +7,11 @@ import CustomComponents
 import Belief.icons 1.0
 import Belief.style 1.0
 import "PageNavigationLogic.js" as PageNavLogic
+import "titlebar"
+import "sidebar"
+import "messageCenterPage"
+import "settingPage"
+import "changeSkinPage"
 import "communityPage"
 import "downloadManagerPage"
 import "favoritePage"
@@ -30,7 +35,21 @@ ApplicationWindow{
         windowAgent.setup(window)
         window.visible = true
     }
-
+    Component{
+        id:messageCenterPage
+        MessageCenterPage{
+        }
+    }
+    Component{
+        id:settingPage
+        SettingPage{
+        }
+    }
+    Component{
+        id:changeSkinPage
+        ChangeSkinPage{
+        }
+    }
     Component{
         id:storePage
         StorePage{
@@ -96,7 +115,12 @@ ApplicationWindow{
             }
         }
     }
-    function loadPage(page, sidebarItem, doSamePageCheck = true) {
+
+    function loadPageFromTitleBar(page){
+        PageNavLogic.switchPage(page)
+    }
+
+    function loadPageFromSideBar(page, sidebarItem, doSamePageCheck = true) {
         if (doSamePageCheck && PageNavLogic.checkIfNewPageIsTheSameAsOld(
                     sidebarItem))
             return

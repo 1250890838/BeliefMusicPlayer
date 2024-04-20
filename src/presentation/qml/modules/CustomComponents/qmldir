@@ -1,2 +1,2 @@
 module CustomComponents
-CButton 1.0 CButton.qml
+CButton 1.0 Buttons/CButton.qml

@@ -6,14 +6,10 @@
         <file>images/minimize.svg</file>
         <file>images/restore.svg</file>
         <file>qml/Main.qml</file>
-        <file>qml/SideBar.qml</file>
         <file>qml/modules/CustomComponents/qmldir</file>
-        <file>qml/modules/CustomComponents/CButton.qml</file>
-        <file>qml/TitleBar.qml</file>
         <file>qml/StyleSheet.qml</file>
         <file>qml/IconSheet.qml</file>
         <file>qml/FontSheet.qml</file>
-        <file>qml/SideBarItem.qml</file>
         <file>images/community.svg</file>
         <file>images/downloadManager.svg</file>
         <file>images/favorite.svg</file>
@@ -36,5 +32,27 @@
         <file>images/PodcastsSelected.svg</file>
         <file>images/recentSelected.svg</file>
         <file>images/storeSelected.svg</file>
+        <file>qml/modules/CustomComponents/Buttons/CButton.qml</file>
+        <file>images/closeHovered.svg</file>
+        <file>images/maximizeHovered.svg</file>
+        <file>images/minimizeHovered.svg</file>
+        <file>images/restoreHovered.svg</file>
+        <file>images/changeSkin.svg</file>
+        <file>images/changeSkinHovered.svg</file>
+        <file>images/search.svg</file>
+        <file>images/searchHovered.svg</file>
+        <file>images/setting.svg</file>
+        <file>images/settingHovered.svg</file>
+        <file>images/messageCenter.svg</file>
+        <file>images/messageCenterHovered.svg</file>
+        <file>qml/settingPage/SettingPage.qml</file>
+        <file>qml/changeSkinPage/ChangeSkinPage.qml</file>
+        <file>qml/messageCenterPage/MessageCenterPage.qml</file>
+        <file>qml/sidebar/SideBar.qml</file>
+        <file>qml/sidebar/SideBarItem.qml</file>
+        <file>qml/titlebar/TitleBar.qml</file>
+        <file>qml/titlebar/SearchBox.qml</file>
+        <file>images/leftArrow.svg</file>
+        <file>images/leftArrowHovered.svg</file>
     </qresource>
 </RCC>

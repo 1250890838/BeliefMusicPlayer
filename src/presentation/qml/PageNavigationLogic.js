@@ -7,7 +7,10 @@ function terminateActionOfCurrentPage(page, sidebarItem) {
     return true
 }
 
-function switchPage(page, sidebarItem) {
+function switchPage(page, sidebarItem=null) {
     pageManager.replace(page)
-    sidebar.changeSelectedItem(sidebarItem)
+    if(sidebarItem!==null){
+        sidebar.changeSelectedItem(sidebarItem)
+    }
 }
+
