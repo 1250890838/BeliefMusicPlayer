@@ -4,11 +4,24 @@ Page{
     background:Rectangle{
         color:"transparent"
     }
-    Text{
-        anchors.centerIn: parent
-        text:"LocalMusicPage"
-        font{
-            pointSize: 36
+    Column{
+        Row{
+            Label{
+                text: qsTr("本地音乐")
+                color:"black"
+                font{
+                    bold:true
+                    pointSize: 20
+                }
+            }
+            Label{
+                text: qsTr("共")
+                color:"gray"
+                font{
+                    bold:true
+                    pointSize: 20
+                }
+            }
         }
     }
 }

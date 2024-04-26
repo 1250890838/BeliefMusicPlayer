@@ -12,6 +12,9 @@ find_package(Qt6 6.4 REQUIRED COMPONENTS Quick)
 find_package(QWindowKit REQUIRED)
 qt_standard_project_setup()
 
+add_subdirectory(adapters/)
+add_subdirectory(application/)
+add_subdirectory(infrastructure/)
 add_subdirectory(presentation/)
 
 qt_add_executable(Belief

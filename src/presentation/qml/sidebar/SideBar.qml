@@ -88,7 +88,7 @@ Pane{
             id:localMusicItem
             source:Icons.localMusic
             sourceSelected: Icons.localMusicSelected
-            text: qsTr("我的音乐")
+            text: qsTr("本地音乐")
             onClicked: loadPageFromSideBar(localMusicPage,root.localMusicItem)
         }
         Item{
@@ -101,7 +101,9 @@ Pane{
         property SideBarItem defaultItem: storeItem
     }
     function changeSelectedItem(newItem) {
-        root.currentItem.selected = false
+        if(root.currentItem!=null){
+            root.currentItem.selected = false
+        }
         root.currentItem = newItem
         root.currentItem.selected = true
     }

@@ -16,11 +16,8 @@ Item {
         anchors.fill: parent
         radius:5
         border.color:"#FAF0FB"
-        gradient: Gradient {
-            orientation: Gradient.Horizontal
-            GradientStop { position: 0.0; color: "#EAF0FB" }
-            GradientStop { position: 1.0; color: "#F7EEF7" }
-        }
+        gradient:textField.activeFocus ? null : Style.gradientSearchBox
+        color: Style.colorSearchBox
         Row{
             leftPadding:10
             rightPadding: 10

@@ -25,8 +25,6 @@ Item {
     property string leftArrow: "qrc:/images/leftArrow.svg"
     property string leftArrowHovered: "qrc:/images/leftArrowHovered.svg"
 
-
-
     property string store:"qrc:/images/store.svg"
     property string storeSelected:"qrc:/images/storeSelected.svg"
     property string podcasts:"qrc:/images/Podcasts.svg"
@@ -41,4 +39,13 @@ Item {
     property string downloadManagerSelected:"qrc:/images/downloadManagerSelected.svg"
     property string localMusic:"qrc:/images/localMusic.svg"
     property string localMusicSelected:"qrc:/images/localMusicSelected.svg"
+
+    property string previous: "qrc:/images/previous.svg"
+    property string next: "qrc:/images/next.svg"
+    property string listLoop: "qrc:/images/listLoop.svg"
+    property string singleLoop: "qrc:/images/singleLoop.svg"
+    property string shuffle: "qrc:/images/shuffle.svg"
+    property string pause: "qrc:/images/pause.svg"
+    property string play: "qrc:/images/play.svg"
+    property string volumn: "qrc:/images/volumn.svg"
 }

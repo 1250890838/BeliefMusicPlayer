@@ -70,18 +70,21 @@ Item{
                         width:10
                         height:parent.height
                     }
-
                     CButton{
+                        id:leftArrow
                         width:28
-                        height:37
+                        height:34
                         anchors.bottom: parent.bottom
                         borderWidth:1
                         source:Icons.leftArrow
                         sourceHovered:Icons.leftArrowHovered
+                        Component.onCompleted: windowAgent.setHitTestVisible(leftArrow)
                     }
                     SearchBox{
+                        id:searchBox
                         anchors.bottom: parent.bottom
                         background:"transparent"
+                        Component.onCompleted: windowAgent.setHitTestVisible(searchBox)
                     }
                 }
 
@@ -97,6 +100,7 @@ Item{
                         sourceHovered:Icons.messageCenterHovered
                         sourceSize:Qt.size(18,18)
                         onClicked: loadPageFromTitleBar(messageCenterPage)
+                        Component.onCompleted: windowAgent.setHitTestVisible(messageCenter)
                     }
                     CButton {
                         id:setting
@@ -105,6 +109,7 @@ Item{
                         sourceHovered:Icons.settingHovered
                         sourceSize:Qt.size(18,18)
                         onClicked: loadPageFromTitleBar(settingPage)
+                        Component.onCompleted: windowAgent.setHitTestVisible(setting)
                     }
                     CButton {
                         id:changeSkin
@@ -113,6 +118,7 @@ Item{
                         sourceHovered:Icons.changeSkinHovered
                         sourceSize:Qt.size(18,18)
                         onClicked: loadPageFromTitleBar(changeSkinPage)
+                        Component.onCompleted: windowAgent.setHitTestVisible(changeSkin)
                     }
                     Rectangle{
                         width:1

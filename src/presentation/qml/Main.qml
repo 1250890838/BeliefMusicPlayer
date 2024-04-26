@@ -2,6 +2,7 @@ import QtQuick
 import QtQuick.Window
 import QtQuick.Controls
 import QtQuick.Layouts
+import QtMultimedia
 import QWindowKit 1.0
 import CustomComponents
 import Belief.icons 1.0
@@ -9,6 +10,7 @@ import Belief.style 1.0
 import "PageNavigationLogic.js" as PageNavLogic
 import "titlebar"
 import "sidebar"
+import "playControlBar"
 import "messageCenterPage"
 import "settingPage"
 import "changeSkinPage"
@@ -22,7 +24,7 @@ import "storePage"
 
 ApplicationWindow{
     id:window
-    visible: false // We hide it first, so we can move the window to our desired position silently.
+    visible: false
     title: qsTr("网易云音乐")
     minimumHeight: 782
     minimumWidth: 1056
@@ -34,6 +36,58 @@ ApplicationWindow{
     Component.onCompleted: {
         windowAgent.setup(window)
         window.visible = true
+    }
+
+    WindowAgent {
+        id: windowAgent
+    }
+
+    ColumnLayout{
+        id:columnLayout
+        anchors.fill: parent
+        spacing: 0
+        TitleBar{
+            Layout.alignment: Qt.AlignTop
+            Layout.fillWidth: true
+        }
+        RowLayout{
+            SideBar{
+                id:sidebar
+                Layout.fillHeight: true
+            }
+            StackView{
+                id:pageManager
+                initialItem: storePage
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+                popEnter: null
+                popExit: null
+                pushEnter: null
+                pushExit: null
+                replaceEnter: null
+                replaceExit: null
+            }
+        }
+    }
+    MediaPlayer{
+        id:mediaPlayer
+        audioOutput: AudioOutput {
+            id: audio
+            volume: playControlBar.volumn
+        }
+        source:new URL("qrc:/images/test.flac")
+
+    }
+    PlayControlBar{
+        id:playControlBar
+        mediaPlayer: mediaPlayer
+        anchors{
+            bottomMargin:30
+            bottom: columnLayout.bottom
+            left: columnLayout.left
+            right: columnLayout.right
+        }
+        z:1
     }
     Component{
         id:messageCenterPage
@@ -86,36 +140,6 @@ ApplicationWindow{
         }
     }
 
-    WindowAgent {
-        id: windowAgent
-    }
-    ColumnLayout{
-        anchors.fill: parent
-        spacing: 0
-        TitleBar{
-            Layout.alignment: Qt.AlignTop
-            Layout.fillWidth: true
-        }
-        RowLayout{
-            SideBar{
-                id:sidebar
-                Layout.fillHeight: true
-            }
-            StackView{
-                id:pageManager
-                initialItem: storePage
-                Layout.fillHeight: true
-                Layout.fillWidth: true
-                popEnter: null
-                popExit: null
-                pushEnter: null
-                pushExit: null
-                replaceEnter: null
-                replaceExit: null
-            }
-        }
-    }
-
     function loadPageFromTitleBar(page){
         PageNavLogic.switchPage(page)
     }
@@ -128,7 +152,6 @@ ApplicationWindow{
         if (!PageNavLogic.terminateActionOfCurrentPage(page, sidebarItem))
             return
 
-        // Switch the page
         PageNavLogic.switchPage(page, sidebarItem)
     }
 }

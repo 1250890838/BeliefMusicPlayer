@@ -12,5 +12,12 @@ function switchPage(page, sidebarItem=null) {
     if(sidebarItem!==null){
         sidebar.changeSelectedItem(sidebarItem)
     }
+    else{
+        if(sidebar.currentItem==null){
+            return
+        }
+        sidebar.currentItem.selected=false
+        sidebar.currentItem = null
+    }
 }
 

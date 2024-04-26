@@ -54,5 +54,19 @@
         <file>qml/titlebar/SearchBox.qml</file>
         <file>images/leftArrow.svg</file>
         <file>images/leftArrowHovered.svg</file>
+        <file>qml/musicPlayerBar/MusicPlayerBar.qml</file>
+        <file>qml/playControlBar/PlayControlBar.qml</file>
+        <file>qml/playControlBar/MusicDiscButton.qml</file>
+        <file>images/next.svg</file>
+        <file>images/pause.svg</file>
+        <file>images/previous.svg</file>
+        <file>images/shuffle.svg</file>
+        <file>images/singleLoop.svg</file>
+        <file>images/listLoop.svg</file>
+        <file>images/test.flac</file>
+        <file>qml/playControlBar/CustomSlider.qml</file>
+        <file>images/play.svg</file>
+        <file>images/volumn.svg</file>
+        <file>qml/playList/PlaybackList.qml</file>
     </qresource>
 </RCC>
