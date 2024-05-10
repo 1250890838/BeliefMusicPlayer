@@ -48,4 +48,6 @@ Item {
     property string pause: "qrc:/images/pause.svg"
     property string play: "qrc:/images/play.svg"
     property string volumn: "qrc:/images/volumn.svg"
+    property string playlist: "qrc:/images/playList.svg"
+    property string playListplay: "qrc:/images/playListplay.svg"
 }

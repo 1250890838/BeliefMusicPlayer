@@ -14,6 +14,7 @@ target_compile_definitions(presentation
 
 target_link_libraries(presentation
                     PRIVATE
+                    adapters
                     Qt6::Core
                     Qt6::Quick
                 )

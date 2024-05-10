@@ -56,7 +56,6 @@ Slider {
         shadowHorizontalOffset: 0
         shadowColor: "black"
         visible: handle.visible
-        z:1
     }
 
     Rectangle {

@@ -67,6 +67,19 @@
         <file>qml/playControlBar/CustomSlider.qml</file>
         <file>images/play.svg</file>
         <file>images/volumn.svg</file>
-        <file>qml/playList/PlaybackList.qml</file>
+        <file>images/playList.svg</file>
+        <file>qml/storePage/SelectivePane.qml</file>
+        <file>qml/storePage/PlaylistSquare.qml</file>
+        <file>qml/storePage/RankingList.qml</file>
+        <file>qml/storePage/SingerList.qml</file>
+        <file>qml/storePage/PageNavigationLogic.js</file>
+        <file>qml/storePage/STabBar.qml</file>
+        <file>qml/storePage/TabBarItem.qml</file>
+        <file>qml/storePage/PlaylistItem.qml</file>
+        <file>qml/playBackList/PlaybackList.qml</file>
+        <file>qml/playListDetailPage/PlaylistDetailPage.qml</file>
+        <file>qml/playListDetailPage/PlayListItem.qml</file>
+        <file>images/playListplay.svg</file>
+        <file>qml/playBackList/PlaybackListItem.qml</file>
     </qresource>
 </RCC>

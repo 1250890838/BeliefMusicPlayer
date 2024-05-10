@@ -16,7 +16,9 @@ Item {
     property color colorPlayControlTimeText: "#ADAFD4"
     property color colorPlayControlVolumnLeft: "#B6BAC0"
     property color colorPlayControlVolumnRight: "#E6E6E8"
+    property color colorPlaybackListBackground: "#FAFAFA"
 
+    property color colorSelectivePlayListPaneSelectedBottomBackground: "#FC3C53"
     property color colorSideBarItemHoveredBackground: "#E4E8EC"
     property color colorSideBarItemSelectedBackground: "#FC3D4A"
     property color colorSideBarItemDivider: "#EAEDF1"
@@ -30,6 +32,13 @@ Item {
         orientation: Gradient.Horizontal
         GradientStop { position: 0.0; color: "#EAF0FB" }
         GradientStop { position: 1.0; color: "#F7EEF7" }
+    }
+
+    property var gradientPlaylistItem: Gradient{
+        orientation: Gradient.Vertical
+        GradientStop { position: 0.0; color: "transparent" }
+        GradientStop { position: 0.75; color: "#648290" }
+        GradientStop { position: 1.0; color: "#648290" }
     }
 
     property color colorSearchBox: "#FFFFFF"

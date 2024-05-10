@@ -2,15 +2,19 @@ import QtQuick
 import QtQuick.Window
 import QtQuick.Controls
 import QtQuick.Layouts
+import QtQuick.Effects
 import QtMultimedia
 import QWindowKit 1.0
 import CustomComponents
 import Belief.icons 1.0
 import Belief.style 1.0
+import Belief.controllers 1.0
 import "PageNavigationLogic.js" as PageNavLogic
 import "titlebar"
 import "sidebar"
 import "playControlBar"
+import "playBackList"
+import "playListDetailPage"
 import "messageCenterPage"
 import "settingPage"
 import "changeSkinPage"
@@ -24,18 +28,20 @@ import "storePage"
 
 ApplicationWindow{
     id:window
-    visible: false
+    visible: true
     title: qsTr("网易云音乐")
     minimumHeight: 782
     minimumWidth: 1056
     height: 782
     width: 1056
     background: Rectangle{
+        anchors.fill: parent
         color:Style.colorMainBackground
     }
     Component.onCompleted: {
         windowAgent.setup(window)
         window.visible = true
+        console.log("xxx : ("+MusicController.albumDetail.album)
     }
 
     WindowAgent {
@@ -47,6 +53,7 @@ ApplicationWindow{
         anchors.fill: parent
         spacing: 0
         TitleBar{
+            id:titleBar
             Layout.alignment: Qt.AlignTop
             Layout.fillWidth: true
         }
@@ -69,18 +76,63 @@ ApplicationWindow{
             }
         }
     }
-    MediaPlayer{
-        id:mediaPlayer
-        audioOutput: AudioOutput {
-            id: audio
-            volume: playControlBar.volumn
-        }
-        source:new URL("qrc:/images/test.flac")
 
+    PlaybackList{
+        id:playbackList
+        visible: false
+        width: 393
+        y:titleBar.y+titleBar.height
+        height: window.height * 4 / 5.5
+        enter: Transition {
+                NumberAnimation{
+                    property: "x"
+                    from: columnLayout.width
+                    to: columnLayout.width-playbackList.width+20
+                }
+
+                NumberAnimation{
+                    property: "opacity"
+                    from: 0
+                    to: 1
+                }
+        }
+        exit: Transition {
+                NumberAnimation{
+                    property: "x"
+                    from: columnLayout.width-playbackList.width+20
+                    to: columnLayout.width
+                }
+
+                NumberAnimation{
+                    property: "opacity"
+                    from: 1
+                    to: 0
+                }
+        }
     }
+
+    NumberAnimation {
+        id:showPlaybackList
+        targets: [ playbackList ]
+        property: "x"
+        from: window.width
+        to: window.width-playbackList.width
+        duration: 200
+        easing.type: Easing.InOutQuad
+    }
+
+    NumberAnimation {
+        id:hidePlaybackList
+        targets: [ playbackList ]
+        property: "x"
+        from: window.width-playbackList.width
+        to: window.width
+        duration: 200
+        easing.type: Easing.InOutQuad
+    }
+
     PlayControlBar{
         id:playControlBar
-        mediaPlayer: mediaPlayer
         anchors{
             bottomMargin:30
             bottom: columnLayout.bottom
@@ -88,6 +140,11 @@ ApplicationWindow{
             right: columnLayout.right
         }
         z:1
+    }
+    Component{
+        id:playListDetailPage
+        PlaylistDetailPage{
+        }
     }
     Component{
         id:messageCenterPage
@@ -140,6 +197,11 @@ ApplicationWindow{
         }
     }
 
+    function loadPlaylistDetailPage(id){
+        MusicController.getPlayListDetail(id)
+        PageNavLogic.switchPage(playListDetailPage)
+    }
+
     function loadPageFromTitleBar(page){
         PageNavLogic.switchPage(page)
     }
@@ -154,4 +216,5 @@ ApplicationWindow{
 
         PageNavLogic.switchPage(page, sidebarItem)
     }
+
 }

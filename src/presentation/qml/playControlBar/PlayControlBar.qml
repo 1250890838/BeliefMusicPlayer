@@ -4,13 +4,11 @@ import QtQuick.Layouts
 import QtMultimedia
 import Belief.style 1.0
 import Belief.icons 1.0
+import Belief.controllers 1.0
 import CustomComponents
 
 Pane{
     id:root
-    required property MediaPlayer mediaPlayer
-    readonly property int mediaPlayerState: root.mediaPlayer.playbackState
-    property real volumn: volumnSlider.value
     implicitHeight: 80
     leftPadding:30
     rightPadding:20
@@ -69,7 +67,7 @@ Pane{
                     source: Icons.play
                     sourceHovered:Icons.play
                     sourceSize:Qt.size(44,44)
-                    onClicked:root.mediaPlayer.play()
+                    onClicked:PlaybackController.play()
                 }
                 CButton {
                     id:pausedButton
@@ -77,7 +75,7 @@ Pane{
                     source: Icons.pause
                     sourceHovered:Icons.pause
                     sourceSize:Qt.size(44,44)
-                    onClicked:root.mediaPlayer.pause()
+                    onClicked:PlaybackController.pause()
                 }
                 CButton {
                     id:nextButton
@@ -96,18 +94,18 @@ Pane{
                     font.pointSize: 7
                     font.letterSpacing: 0.5
                     anchors.verticalCenter: parent.verticalCenter
-                    text: root.getTime(root.mediaPlayer.position)
+                    text: root.getTime(PlaybackController.position)
                     color: Style.colorPlayControlTimeText
                 }
                 CustomSlider {
                     id: mediaSlider
-                    enabled: root.mediaPlayer.seekable
+                    enabled: true
                     anchors.verticalCenter: parent.verticalCenter
                     width:310
                     to: 1.0
-                    value: root.mediaPlayer.position / root.mediaPlayer.duration
+                    value: PlaybackController.position / PlaybackController.duration
                     Layout.preferredWidth: 313
-                    onMoved: root.mediaPlayer.setPosition(value * root.mediaPlayer.duration)
+                    onMoved: PlaybackController.position=value * PlaybackController.duration
                 }
                 Label {
                     id: durationTime
@@ -115,7 +113,7 @@ Pane{
                     font.bold: true
                     font.pointSize: 7
                     font.letterSpacing: 0.5
-                    text: root.getTime(root.mediaPlayer.duration)
+                    text: root.getTime(PlaybackController.duration)
                     color: Style.colorPlayControlTimeText
                 }
             }
@@ -127,6 +125,21 @@ Pane{
         }
         Row{
             spacing: 6
+            CButton {
+                id:playlistButton
+                anchors.verticalCenter: parent.verticalCenter
+                source: Icons.playlist
+                sourceHovered:Icons.playlist
+                sourceSize:Qt.size(20,20)
+                onClicked:{
+                    playbackList.open()
+                }
+            }
+            Item{
+                id:spacer
+                width:10
+                height:10
+            }
             CButton {
                 id:volumnButton
                 anchors.verticalCenter: parent.verticalCenter
@@ -142,13 +155,16 @@ Pane{
                 width: 80
                 to: 1.0
                 value:0.5
+                onValueChanged: {
+                    PlaybackController.volume=value
+                }
             }
         }
     }
     states: [
         State {
             name: "playing"
-            when: root.mediaPlayerState == MediaPlayer.PlayingState
+            when: PlaybackController.playbackState === PlaybackController.PlayingState
 
             PropertyChanges {
                 playButton.visible: false
@@ -159,7 +175,7 @@ Pane{
         },
         State {
             name: "paused"
-            when: root.mediaPlayerState == MediaPlayer.PausedState || root.mediaPlayerState == MediaPlayer.StoppedState
+            when: PlaybackController.playbackState === PlaybackController.PausedState || PlaybackController.playbackState === PlaybackController.StoppedState
 
             PropertyChanges {
                 playButton.visible: true
