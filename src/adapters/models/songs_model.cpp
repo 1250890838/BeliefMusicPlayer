@@ -13,6 +13,7 @@ QHash<int, QByteArray> SongsModel::roleNames() const{
     roles[DtRole] = "duration";
     roles[UrlRole] = "url";
     roles[NameRole] = "name";
+    roles[AlPicUrlRole]= "picUrl";
     return roles;
 }
 
@@ -42,6 +43,8 @@ QVariant SongsModel::data(const QModelIndex & index, int role) const{
         return QVariant::fromValue(song.url);
     case NameRole:
         return QVariant::fromValue(song.name);
+    case AlPicUrlRole:
+        return QVariant::fromValue(song.albumPicUrl);
     default:
         return QVariant();
         break;

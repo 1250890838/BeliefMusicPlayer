@@ -17,6 +17,7 @@ public:
         IdRole = Qt::UserRole + 1,
         ArRole,
         AlRole,
+        AlPicUrlRole,
         DtRole,
         UrlRole,
         NameRole

@@ -36,7 +36,7 @@ domain::Album MusicGateway::getAlbumFromJson(const QJsonObject& values){
         .subscribedCount=values["subscribedCount"].toVariant().toLongLong(),
         .trackCount=values["trackCount"].toVariant().toLongLong(),
         .createTime=values["createTime"].toVariant().toLongLong(),
-        .coverImgUrl=QUrl(values["coverImgUrl"].toString()),
+        .coverImgUrl=QUrl{values["coverImgUrl"].toString()},
         .desc=values["description"].toString(),
         .tags=tags,
         .playCount=values["playCount"].toVariant().toLongLong()
@@ -74,18 +74,19 @@ QStringList MusicGateway::formatTags(const QJsonArray& array){
 }
 
 domain::Song MusicGateway::getSongFromJson(const QJsonObject& values){
-    QString album=formatAlbum(values["al"].toObject());
+    const auto &[albumName,albumPicUrl]=formatAlbum(values["al"].toObject());
     domain::Song song{
         .id=values["id"].toVariant().toLongLong(),
-        .album=album,
+        .album=albumName,
+        .albumPicUrl=albumPicUrl,
         .name=values["name"].toString(),
         .duration=values["dt"].toVariant().toLongLong()
     };
     return song;
 }
 
-QString MusicGateway::formatAlbum(const QJsonObject& object){
-    return object["name"].toString();
+QPair<QString,QString> MusicGateway::formatAlbum(const QJsonObject& object){
+    return { object["name"].toString(),object["picUrl"].toString() };
 }
 
 void MusicGateway::processAlbumDetail(const QByteArray& data){

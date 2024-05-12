@@ -16,6 +16,7 @@ Item {
     property string name:model.name
     property string albumName:model.album
     property int duration:model.duration
+    property string albumPicUrl:model.picUrl
     function getTime(time : int) {
         const h = Math.floor(time / 3600000).toString()
         const m = Math.floor(time / 60000).toString()
@@ -51,6 +52,12 @@ Item {
                 horizontalAlignment: Text.AlignLeft
                 visible: !mouseArea.containsMouse
                 font.pointSize: 13
+            }
+            Image{
+                id:coverImage
+                Layout.preferredWidth: 36
+                Layout.preferredHeight: 36
+                source: root.albumPicUrl
             }
             Rectangle{
                 id:nameRect
