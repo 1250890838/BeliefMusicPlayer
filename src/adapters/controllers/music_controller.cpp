@@ -38,6 +38,7 @@ void MusicController::getSelectiveAlbum(){
 }
 
 void MusicController::getPlayListDetail(long long id){
+    m_albumDetail.clear();
     m_service->getPlaylistDetail(id);
 }
 

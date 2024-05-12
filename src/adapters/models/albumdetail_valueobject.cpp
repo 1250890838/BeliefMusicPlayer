@@ -44,4 +44,11 @@ void AlbumDetail::addNewSongEnd(){
     m_songsModel.endInsertingRow();
 }
 
+void AlbumDetail::clear(){
+    m_name.clear();
+    m_desc.clear();
+    m_coverImgUrl.clear();
+    m_songsModel.clear();
+}
+
 }

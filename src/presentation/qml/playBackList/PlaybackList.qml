@@ -52,7 +52,9 @@ Popup{
                 Layout.fillWidth: true
                 Layout.fillHeight: true
                 model:MusicController.playbackListModel
+                boundsBehavior:Flickable.StopAtBounds
                 delegate: PlaybackListItem{
+                    index:model.index
                 }
             }
          }

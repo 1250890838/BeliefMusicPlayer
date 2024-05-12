@@ -10,22 +10,36 @@ PlaybackController::PlaybackController(application::IPlaybackService* service):m
             this,&PlaybackController::durationChanged);
     connect(m_service,&application::IPlaybackService::positionChanged,
             this,&PlaybackController::positionChanged);
+    connect(m_service,&application::IPlaybackService::currentPlayIndexChanged,
+            this,&PlaybackController::currentPlayIndexChanged);
 }
 
-void PlaybackController::setShufflePlaybackMode(){
-    m_service->setPlaybackMode(application::IPlaybackService::Shuffle);
+PlaybackController::PlaybackMode PlaybackController::playbackMode() const{
+    return static_cast<PlaybackMode>(m_service->playbackMode());
 }
 
-void PlaybackController::setListloopPlaybackMode(){
-    m_service->setPlaybackMode(application::IPlaybackService::ListLoop);
+void PlaybackController::setPlaybackMode(PlaybackMode mode){
+    m_service->setPlaybackMode(static_cast<application::IPlaybackService::PlaybackMode>(mode));
+    emit playbackModeChanged(mode);
 }
 
-void PlaybackController::setSingleloopPlaybackMode(){
-    m_service->setPlaybackMode(application::IPlaybackService::SingleLoop);
+void PlaybackController::changePlaybackMode(){
+    if(m_service->playbackMode()==application::IPlaybackService::Shuffle){
+        setPlaybackMode(Sequential);
+    }
+    else if(m_service->playbackMode()==application::IPlaybackService::Sequential){
+        setPlaybackMode(ListLoop);
+    }
+    else if(m_service->playbackMode()==application::IPlaybackService::ListLoop){
+        setPlaybackMode(SingleLoop);
+    }
+    else if(m_service->playbackMode()==application::IPlaybackService::SingleLoop){
+        setPlaybackMode(Shuffle);
+    }
 }
 
-void PlaybackController::setSequentialPlaybackMode(){
-    m_service->setPlaybackMode(application::IPlaybackService::Sequential);
+int PlaybackController::currentPlayIndex() const{
+    return m_service->currentPlayIndex();
 }
 
 model::SongsModel* PlaybackController::getPlaybackListModel(){
@@ -63,6 +77,14 @@ PlaybackController::PlaybackState PlaybackController::playbackState() const {
 void PlaybackController::setSource(const QUrl& media){
     m_service->setSource(media);
     emit sourceChanged(media);
+}
+
+void PlaybackController::next(){
+    m_service->playNextSong();
+}
+
+void PlaybackController::previous(){
+    m_service->playPreviousSong();
 }
 
 void PlaybackController::play(){

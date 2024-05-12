@@ -81,5 +81,9 @@
         <file>qml/playListDetailPage/PlayListItem.qml</file>
         <file>images/playListplay.svg</file>
         <file>qml/playBackList/PlaybackListItem.qml</file>
+        <file>images/sequential.svg</file>
+        <file>qml/ClosePrompt.qml</file>
+        <file>qml/modules/CustomComponents/Buttons/CTextButton.qml</file>
+        <file>qml/modules/CustomComponents/Checkbox/CCheckBox.qml</file>
     </qresource>
 </RCC>

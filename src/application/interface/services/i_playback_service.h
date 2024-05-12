@@ -19,11 +19,16 @@ public:
     virtual float volume() const = 0;
     virtual void setVolume(float) = 0;
     virtual void setPlaybackList(QVector<domain::Song>*) = 0;
+    virtual PlaybackMode playbackMode() = 0;
     virtual void setPlaybackMode(PlaybackMode) = 0;
+    virtual void playNextSong() = 0;
+    virtual void playPreviousSong() = 0;
+    virtual int currentPlayIndex() = 0;
 public slots:
     virtual void playNewSong() = 0;
 signals:
     void volumeChanged();
+    void currentPlayIndexChanged(int);
 };
 }
 #endif // I_PLAYBACK_SERVICE_H

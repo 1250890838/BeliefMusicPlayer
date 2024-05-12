@@ -42,5 +42,7 @@ Item {
     }
 
     property color colorSearchBox: "#FFFFFF"
-
+    property color colorClosePromptButton: "#FC3D4A"
+    property color colorCheckBox: "#FF3A3A"
+    property color colorCheckBoxHovered: "#E33742"
 }

@@ -154,7 +154,9 @@ Item{
                         anchors.verticalCenter: parent.verticalCenter
                         source: "qrc:/images/close.svg"
                         sourceHovered:Icons.closeHovered
-                        onClicked: window.close()
+                        onClicked: {
+                            closePrompt.open()
+                        }
                         Component.onCompleted: windowAgent.setSystemButton(WindowAgent.Close, closeButton)
                     }
                     Component.onCompleted: {

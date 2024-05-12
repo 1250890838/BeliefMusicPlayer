@@ -50,9 +50,46 @@ Pane{
                 CButton {
                     id:playModeButton
                     anchors.verticalCenter: parent.verticalCenter
-                    source: Icons.shuffle
-                    sourceHovered:Icons.shuffle
                     sourceSize:Qt.size(20,20)
+                    source:Icons.shuffle
+                    sourceHovered:Icons.shuffle
+                    onClicked:{
+                        PlaybackController.changePlaybackMode()
+                    }
+                    states: [
+                        State {
+                            name: "shufflePlayMode"
+                            when: PlaybackController.playbackMode===PlaybackController.Shuffle
+                            PropertyChanges {
+                                playModeButton.source:Icons.shuffle
+                                playModeButton.sourceHovered:Icons.shuffle
+                            }
+                        },
+                        State {
+                            name: "listloopPlayMode"
+                            when: PlaybackController.playbackMode===PlaybackController.ListLoop
+                            PropertyChanges {
+                                playModeButton.source:Icons.listLoop
+                                playModeButton.sourceHovered:Icons.listLoop
+                            }
+                        },
+                        State {
+                            name: "singlePlayMode"
+                            when: PlaybackController.playbackMode===PlaybackController.SingleLoop
+                            PropertyChanges {
+                                playModeButton.source:Icons.singleLoop
+                                playModeButton.sourceHovered:Icons.singleLoop
+                            }
+                        },
+                        State {
+                            name: "sequentialPlayMode"
+                            when: PlaybackController.playbackMode===PlaybackController.Sequential
+                            PropertyChanges {
+                                playModeButton.source:Icons.sequential
+                                playModeButton.sourceHovered:Icons.sequential
+                            }
+                        }
+                    ]
                 }
                 CButton {
                     id:previousButton
@@ -60,6 +97,7 @@ Pane{
                     source: Icons.previous
                     sourceHovered:Icons.previous
                     sourceSize:Qt.size(26,26)
+                    onClicked:PlaybackController.previous()
                 }
                 CButton {
                     id:playButton
@@ -83,6 +121,7 @@ Pane{
                     source: Icons.next
                     sourceHovered:Icons.next
                     sourceSize:Qt.size(20,20)
+                    onClicked:PlaybackController.next()
                 }
             }
             Row{

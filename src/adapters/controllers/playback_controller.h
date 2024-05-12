@@ -12,10 +12,6 @@ class PlaybackController : public IPlaybackController
     Q_OBJECT
 public:
     explicit PlaybackController(application::IPlaybackService*);
-    virtual void setShufflePlaybackMode() override;
-    virtual void setListloopPlaybackMode() override;
-    virtual void setSingleloopPlaybackMode() override;
-    virtual void setSequentialPlaybackMode() override;
 
     virtual model::SongsModel* getPlaybackListModel() override;
     virtual float volume() const override;
@@ -29,7 +25,12 @@ public:
     virtual void play() override;
     virtual void pause() override;
     virtual void stop() override;
-
+    virtual void next() override;
+    virtual void previous() override;
+    virtual PlaybackMode playbackMode() const override;
+    virtual void setPlaybackMode(PlaybackMode) override;
+    virtual void changePlaybackMode() override;
+    virtual int currentPlayIndex() const override;
 private:
     application::IPlaybackService* m_service;
     model::SongsModel m_playbackListModel;

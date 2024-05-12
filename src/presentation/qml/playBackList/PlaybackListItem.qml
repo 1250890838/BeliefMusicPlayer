@@ -1,5 +1,6 @@
 import QtQuick
 import QtQuick.Controls
+import Belief.controllers 1.0
 /*
     roles[IdRole] = "id";
     roles[AlRole] = "album";
@@ -8,8 +9,10 @@ import QtQuick.Controls
 */
 
 Pane{
+    id:root
+    property int index
     background:Rectangle{
-        color:"transparent"
+        color: root.index === PlaybackController.currentPlayIndex ? "red" : "transparent"
     }
 
     function getTime(time : int) {
@@ -23,6 +26,7 @@ Pane{
     }
 
     Row{
+        spacing: 125
         Text{
             id:name
             text:model.name

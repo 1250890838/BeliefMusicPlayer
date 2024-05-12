@@ -16,12 +16,15 @@ public:
     virtual float volume() const override;
     virtual void setPlaybackList(QVector<domain::Song>*) override;
     virtual void setPlaybackMode(PlaybackMode) override;
+    virtual PlaybackMode playbackMode() override;
 public slots:
     void setVolume(float volume) override;
     virtual void playNewSong() override;
+    virtual void playPreviousSong() override;
+    virtual void playNextSong() override;
+    virtual int currentPlayIndex() override;
 private:
     int shuffleNextSongIndex();
-    void playNextSong();
 private:
     int m_playbackCurrentIndex;
     PlaybackMode m_playbackMode;

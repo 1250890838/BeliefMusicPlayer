@@ -24,6 +24,7 @@ public slots:
     void setDesc(const QString&);
     void addNewSong(int index);
     void addNewSongEnd();
+    void clear();
 
 public:
     explicit AlbumDetail(QVector<domain::Song>*);

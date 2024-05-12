@@ -6,12 +6,14 @@ Item {
     id: root
     implicitWidth: sourceSize.width > 24 ? sourceSize.width : 24
     implicitHeight: sourceSize.height > 24 ? sourceSize.height : 24
+    opacity: root.unenabled ? 0.5 : 1
     required property string source
     required property string sourceHovered
     property real borderWidth:0
     property color borderColor:Style.colorTitlebarButtonBorder
     property color background:"transparent"
     property color backgroundHovered:"transparent"
+    property bool unenabled:false
     property size sourceSize:Qt.size(20,20)
     signal clicked();
     Rectangle{

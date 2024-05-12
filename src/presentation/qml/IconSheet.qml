@@ -45,6 +45,7 @@ Item {
     property string listLoop: "qrc:/images/listLoop.svg"
     property string singleLoop: "qrc:/images/singleLoop.svg"
     property string shuffle: "qrc:/images/shuffle.svg"
+    property string sequential: "qrc:/images/sequential.svg"
     property string pause: "qrc:/images/pause.svg"
     property string play: "qrc:/images/play.svg"
     property string volumn: "qrc:/images/volumn.svg"

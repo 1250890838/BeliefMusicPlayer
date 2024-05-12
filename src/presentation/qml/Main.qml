@@ -34,6 +34,7 @@ ApplicationWindow{
     minimumWidth: 1056
     height: 782
     width: 1056
+    property var operationTrackList
     background: Rectangle{
         anchors.fill: parent
         color:Style.colorMainBackground
@@ -141,6 +142,13 @@ ApplicationWindow{
         }
         z:1
     }
+
+    ClosePrompt{
+        id:closePrompt
+        x:(window.width-width)/2
+        y:(window.height-height)/2
+    }
+
     Component{
         id:playListDetailPage
         PlaylistDetailPage{
