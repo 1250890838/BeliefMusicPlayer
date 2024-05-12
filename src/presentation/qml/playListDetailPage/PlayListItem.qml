@@ -53,11 +53,12 @@ Item {
                 visible: !mouseArea.containsMouse
                 font.pointSize: 13
             }
-            Image{
-                id:coverImage
-                Layout.preferredWidth: 36
-                Layout.preferredHeight: 36
-                source: root.albumPicUrl
+            RoundImage{
+                id:roundImage
+                implicitHeight: 36
+                implicitWidth: 36
+                radius:4.5
+                source:root.albumPicUrl
             }
             Rectangle{
                 id:nameRect

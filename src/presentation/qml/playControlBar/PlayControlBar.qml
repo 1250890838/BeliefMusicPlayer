@@ -98,6 +98,7 @@ Pane{
                     sourceHovered:Icons.previous
                     sourceSize:Qt.size(26,26)
                     onClicked:PlaybackController.previous()
+                    toolTipText:qsTr("上一首播放")
                 }
                 CButton {
                     id:playButton
@@ -106,6 +107,7 @@ Pane{
                     sourceHovered:Icons.play
                     sourceSize:Qt.size(44,44)
                     onClicked:PlaybackController.play()
+                    toolTipText:qsTr("播放")
                 }
                 CButton {
                     id:pausedButton
@@ -114,6 +116,7 @@ Pane{
                     sourceHovered:Icons.pause
                     sourceSize:Qt.size(44,44)
                     onClicked:PlaybackController.pause()
+                    toolTipText:qsTr("暂停")
                 }
                 CButton {
                     id:nextButton
@@ -122,6 +125,7 @@ Pane{
                     sourceHovered:Icons.next
                     sourceSize:Qt.size(20,20)
                     onClicked:PlaybackController.next()
+                    toolTipText:qsTr("下一首播放")
                 }
             }
             Row{
@@ -170,9 +174,8 @@ Pane{
                 source: Icons.playlist
                 sourceHovered:Icons.playlist
                 sourceSize:Qt.size(20,20)
-                onClicked:{
-                    playbackList.open()
-                }
+                onClicked: playbackList.open()
+                toolTipText:qsTr("播放列表")
             }
             Item{
                 id:spacer
@@ -185,6 +188,7 @@ Pane{
                 source: Icons.volumn
                 sourceHovered:Icons.volumn
                 sourceSize:Qt.size(20,20)
+                toolTipText:qsTr("音量")
             }
             CustomSlider{
                 id:volumnSlider

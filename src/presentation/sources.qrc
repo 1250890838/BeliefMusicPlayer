@@ -85,5 +85,6 @@
         <file>qml/ClosePrompt.qml</file>
         <file>qml/modules/CustomComponents/Buttons/CTextButton.qml</file>
         <file>qml/modules/CustomComponents/Checkbox/CCheckBox.qml</file>
+        <file>qml/modules/CustomComponents/RoundImage.qml</file>
     </qresource>
 </RCC>

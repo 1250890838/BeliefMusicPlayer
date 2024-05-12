@@ -15,6 +15,7 @@ Item {
     property color backgroundHovered:"transparent"
     property bool unenabled:false
     property size sourceSize:Qt.size(20,20)
+    property string toolTipText
     signal clicked();
     Rectangle{
         opacity:mouseArea.containsMouse ? 1 :0.9
@@ -41,8 +42,13 @@ Item {
            cursorShape: Qt.PointingHandCursor
            onClicked:{
                root.clicked()
-        }
+            }
     }
-
+    ToolTip{
+        id:toolTip
+        delay: 500
+        visible: mouseArea.containsMouse && root.toolTipText.length!=0
+        text:root.toolTipText
+    }
 
 }

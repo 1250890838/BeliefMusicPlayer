@@ -2,3 +2,4 @@ module CustomComponents
 CButton 1.0 Buttons/CButton.qml
 CTextButton 1.0 Buttons/CTextButton.qml
 CCheckBox 1.0 Checkbox/CCheckBox.qml
+RoundImage 1.0 RoundImage.qml
