@@ -9,11 +9,7 @@ import CustomComponents
 
 Pane{
     id:root
-    implicitHeight: 80
-    leftPadding:30
-    rightPadding:20
-    topPadding:10
-    bottomPadding:10
+
     background: Rectangle{
         anchors.fill: parent
         border.width: 1

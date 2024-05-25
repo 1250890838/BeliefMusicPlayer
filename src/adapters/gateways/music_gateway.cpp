@@ -89,13 +89,20 @@ QPair<QString,QString> MusicGateway::formatAlbum(const QJsonObject& object){
     return { object["name"].toString(),object["picUrl"].toString() };
 }
 
+QPair<QString,QUrl> MusicGateway::formatCreator(const QJsonObject& object){
+    QString nickName=object["nickname"].toString();
+    QUrl avatarImgUrl=object["avatarUrl"].toString();
+    return {nickName,avatarImgUrl};
+}
+
 void MusicGateway::processAlbumDetail(const QByteArray& data){
     auto metadataObject = QJsonDocument::fromJson(data).object();
+
     auto result = metadataObject["playlist"].toObject();
+    const auto& [nickName,nickUrl]=formatCreator(result["creator"].toObject());
     QString name=result["name"].toString();
     QUrl coverImgUrl=result["coverImgUrl"].toString();
     QString desc=result["description"].toString();
-
     auto tracks = result["tracks"].toArray();
 
     QVector<domain::Song> songs;
@@ -104,7 +111,7 @@ void MusicGateway::processAlbumDetail(const QByteArray& data){
         auto song = getSongFromJson(object);
         songs.append(song);
     }
-    emit getAlbumDetailFinshed(name,desc,coverImgUrl,songs);
+    emit getAlbumDetailFinshed(name,desc,coverImgUrl,songs,nickName,nickUrl);
 }
 
 }

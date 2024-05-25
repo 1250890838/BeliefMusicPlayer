@@ -32,8 +32,25 @@ void AlbumDetail::setDesc(const QString& desc){
     emit descChanged(desc);
 }
 
+void AlbumDetail::setCreatorImgUrl(const QUrl& url){
+    m_creatorImgUrl=url;
+    emit creatorImgUrlChanged(url);
+}
+
+void AlbumDetail::setCreatorName(const QString& name){
+    m_creatorName=name;
+    emit creatorNameChanged(name);
+}
+
 SongsModel* AlbumDetail::songsModel(){
     return &m_songsModel;
+}
+
+QString AlbumDetail::creatorName(){
+    return m_creatorName;
+}
+QUrl AlbumDetail::creatorImgUrl(){
+    return m_creatorImgUrl;
 }
 
 void AlbumDetail::addNewSong(int index){

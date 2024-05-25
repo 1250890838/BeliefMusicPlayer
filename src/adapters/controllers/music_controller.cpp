@@ -26,6 +26,10 @@ MusicController::MusicController(application::IMusicService* service):
             &m_albumDetail,&model::AlbumDetail::setCoverImgUrl);
     connect(m_service,&application::IMusicService::newAlbumDesc,
             &m_albumDetail,&model::AlbumDetail::setDesc);
+    connect(m_service,&application::IMusicService::newAlbumCreatorName,
+            &m_albumDetail,&model::AlbumDetail::setCreatorName);
+    connect(m_service,&application::IMusicService::newAlbumCreatorImgUrl,
+            &m_albumDetail,&model::AlbumDetail::setCreatorImgUrl);
 }
 
 void MusicController::clearSelectiveAlbum(){

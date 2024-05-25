@@ -86,5 +86,6 @@
         <file>qml/modules/CustomComponents/Buttons/CTextButton.qml</file>
         <file>qml/modules/CustomComponents/Checkbox/CCheckBox.qml</file>
         <file>qml/modules/CustomComponents/RoundImage.qml</file>
+        <file>qml/modules/CustomComponents/WrapFlickable.qml</file>
     </qresource>
 </RCC>

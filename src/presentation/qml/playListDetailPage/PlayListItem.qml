@@ -49,9 +49,10 @@ Item {
             Label{
                 id:index
                 text:root.index
+                Layout.preferredWidth: 30
                 horizontalAlignment: Text.AlignLeft
                 visible: !mouseArea.containsMouse
-                font.pointSize: 13
+                font.pointSize: 11
             }
             RoundImage{
                 id:roundImage
@@ -72,7 +73,7 @@ Item {
                     elide:Text.ElideRight
                     horizontalAlignment: Text.AlignLeft
                     verticalAlignment: Text.AlignVCenter
-                    font.pointSize: 13
+                    font.pointSize: 11
                 }
             }
             Rectangle{
@@ -87,14 +88,14 @@ Item {
                     elide:Text.ElideRight
                     horizontalAlignment: Text.AlignLeft
                     verticalAlignment: Text.AlignVCenter
-                    font.pointSize: 13
+                    font.pointSize: 11
                 }
             }
             Label{
                 id:duration
                 text:root.getTime(root.duration)
                 horizontalAlignment: Text.AlignLeft
-                font.pointSize: 13
+                font.pointSize: 11
             }
         }
     }

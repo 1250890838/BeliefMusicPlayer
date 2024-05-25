@@ -49,8 +49,7 @@ Item {
     Rectangle{
         id:rect
         width:parent.width
-        height:parent.height
-        y:parent.height
+        height: 0
         visible: false
             Row{
                 Text {
@@ -73,9 +72,9 @@ Item {
     NumberAnimation {
         id:showAnimation
         target: rect
-        property: "y"
-        from:parent.height
-        to:0
+        property: "height"
+        from:0
+        to:230
         duration: 200
         easing.type: Easing.InOutQuad
     }
@@ -83,11 +82,11 @@ Item {
     NumberAnimation {
         id:hideAnimation
         target: rect
-        property: "y"
+        property: "height"
         duration: 200
         easing.type: Easing.InOutQuad
-        from:0
-        to:parent.height
+        from:230
+        to:0
     }
 
     MouseArea{
@@ -102,6 +101,8 @@ Item {
         }
         onClicked: {
             root.clicked(model.id)
+            console.log("parent height: "+parent.height)
+            console.log("parent implicit height: "+parent.implicitHeight)
         }
     }
 

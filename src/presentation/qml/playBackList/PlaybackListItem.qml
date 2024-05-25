@@ -1,12 +1,7 @@
 import QtQuick
 import QtQuick.Controls
 import Belief.controllers 1.0
-/*
-    roles[IdRole] = "id";
-    roles[AlRole] = "album";
-    roles[ArRole] = "artists";
-    roles[DtRole] = "duration";
-*/
+import CustomComponents
 
 Pane{
     id:root
@@ -26,12 +21,21 @@ Pane{
     }
 
     Row{
-        spacing: 125
+        RoundImage{
+            id:roundImage
+            source:model.picUrl
+            width:50
+            height:50
+        }
         Text{
             id:name
             text:model.name
         }
-
+        Item{
+            id:spacer
+            width:100
+            height:20
+        }
         Text{
             id:duration
             text:getTime(model.duration)

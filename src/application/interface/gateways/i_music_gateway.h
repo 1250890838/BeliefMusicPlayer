@@ -18,7 +18,8 @@ public:
 signals:
     void getSelectiveAlbumFinshed(const QVector<domain::Album>&);
     void getAlbumDetailFinshed(const QString& name,const QString desc,
-                               const QUrl& coverImgUrl,const QVector<domain::Song>&);
+                               const QUrl& coverImgUrl,const QVector<domain::Song>&,
+                                const QString& creatorName,const QUrl& creatorImgUrl);
     void getSongUrlFinshed(long long id,const QUrl&);
 };
 }

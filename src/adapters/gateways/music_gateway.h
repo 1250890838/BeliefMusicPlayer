@@ -19,6 +19,7 @@ private slots:
     void processAlbumDetail(const QByteArray&);
 private:
     QPair<QString,QString> formatAlbum(const QJsonObject&);
+    QPair<QString,QUrl> formatCreator(const QJsonObject&);
     domain::Song getSongFromJson(const QJsonObject&);
 
     QStringList formatTags(const QJsonArray&);

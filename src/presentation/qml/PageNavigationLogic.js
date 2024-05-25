@@ -9,7 +9,6 @@ function terminateActionOfCurrentPage(page, sidebarItem) {
 
 function switchPage(page, sidebarItem=null) {
     pageManager.replace(page)
-    operationTrackList.push(page)
     if(sidebarItem!==null){
         sidebar.changeSelectedItem(sidebarItem)
     }

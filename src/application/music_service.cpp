@@ -60,11 +60,14 @@ void MusicService::processSongUrl(long long id,const QUrl& url){
 }
 
 void MusicService::processAlbumDetail(const QString& name,const QString desc,
-                                       const QUrl& coverImgUrl,const QVector<domain::Song>& songs){
+                                       const QUrl& coverImgUrl,const QVector<domain::Song>& songs,
+                                        const QString& creatorName,const QUrl& creatorImgUrl){
 
     emit newAlbumName(name);
     emit newAlbumDesc(desc);
     emit newAlbumCoverImgUrl(coverImgUrl);
+    emit newAlbumCreatorName(creatorName);
+    emit newAlbumCreatorImgUrl(creatorImgUrl);
 
     for(auto& song:songs){
         emit songInsertionStarted(m_playListDetail.count());

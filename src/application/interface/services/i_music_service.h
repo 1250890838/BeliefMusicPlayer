@@ -30,6 +30,8 @@ signals:
     void newAlbumName(const QString&);
     void newAlbumCoverImgUrl(const QUrl&);
     void newAlbumDesc(const QString&);
+    void newAlbumCreatorName(const QString&);
+    void newAlbumCreatorImgUrl(const QUrl&);
     void playNewSong();
 };
 }

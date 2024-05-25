@@ -22,7 +22,8 @@ public:
 private:
     void processSelectieAlbumMetaData(const QVector<domain::Album>& albums);
     void processAlbumDetail(const QString& name,const QString desc,
-                             const QUrl& coverImgUrl,const QVector<domain::Song>&);
+                             const QUrl& coverImgUrl,const QVector<domain::Song>&,
+                                const QString& creatorName,const QUrl& creatorImgUrl);
     void processSongUrl(long long id,const QUrl& url);
 
     IMusicGateway* m_gateway;

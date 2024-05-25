@@ -76,6 +76,13 @@ ApplicationWindow{
                 replaceExit: null
             }
         }
+
+        PlayControlBar{
+            id:playControlBar
+            Layout.fillWidth: true
+            Layout.bottomMargin: 30
+            Layout.preferredHeight: 80
+        }
     }
 
     PlaybackList{
@@ -130,17 +137,6 @@ ApplicationWindow{
         to: window.width
         duration: 200
         easing.type: Easing.InOutQuad
-    }
-
-    PlayControlBar{
-        id:playControlBar
-        anchors{
-            bottomMargin:30
-            bottom: columnLayout.bottom
-            left: columnLayout.left
-            right: columnLayout.right
-        }
-        z:1
     }
 
     ClosePrompt{
