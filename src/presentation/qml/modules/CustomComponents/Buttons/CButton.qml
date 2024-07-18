@@ -13,7 +13,7 @@ Item {
     property color borderColor:Style.colorTitlebarButtonBorder
     property color background:"transparent"
     property color backgroundHovered:"transparent"
-    property bool unenabled:false
+    property bool unenabled
     property size sourceSize:Qt.size(20,20)
     property string toolTipText
     signal clicked();
@@ -50,5 +50,7 @@ Item {
         visible: mouseArea.containsMouse && root.toolTipText.length!=0
         text:root.toolTipText
     }
-
+    onUnenabledChanged: {
+        console.log(unenabled)
+     }
 }

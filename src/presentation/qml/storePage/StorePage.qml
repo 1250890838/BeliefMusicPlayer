@@ -3,6 +3,7 @@ import QtQuick.Controls
 import QtQuick.Layouts
 import Belief.style
 import Belief.controllers 1.0
+import "../sidebar"
 import "PageNavigationLogic.js" as PageNavLogic
 
 Page{
@@ -41,25 +42,21 @@ Page{
         }
         PageNavLogic.switchPage(pane,tabbarItem)
     }
-
-    Component{
+    SelectivePane{
         id:selectivePane
-        SelectivePane{
-        }
+        visible:false
     }
-    Component{
+
+    PlaylistSquare{
         id:playlistSquare
-        PlaylistSquare{
-        }
+        visible:false
     }
-    Component{
+    RankingList{
         id:rankingList
-        RankingList{
-        }
+        visible:false
     }
-    Component{
+    SingerList{
         id:singerList
-        SingerList{
-        }
+        visible:false
     }
 }

@@ -5,6 +5,8 @@ import CustomComponents
 import QWindowKit 1.0
 import Belief.icons 1.0
 import Belief.style 1.0
+import "../PageNavigationLogic.js" as PageNavLogic
+
 Item{
     id:root
     implicitHeight: 66
@@ -79,6 +81,13 @@ Item{
                         source:Icons.leftArrow
                         sourceHovered:Icons.leftArrowHovered
                         Component.onCompleted: windowAgent.setHitTestVisible(leftArrow)
+                        onClicked: PageNavLogic.prevOperation()
+                        unenabled : {
+                                    if(window.operationTrackList.length==1)
+                                        return true
+                                    else
+                                        return false
+                        }
                     }
                     SearchBox{
                         id:searchBox

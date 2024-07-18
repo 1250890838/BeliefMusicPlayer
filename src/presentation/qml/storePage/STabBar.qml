@@ -1,12 +1,14 @@
 import QtQuick
 import QtQuick.Controls
+import "PageNavigationLogic.js" as PageNavLogic
+import "../PageNavigationLogic.js" as PageNavLogicWithMain
 
 Item{
     id:root
     implicitHeight: 55
     property TabBarItem currentItem: internal.defaultItem
     Pane{
-        id:tabbar
+        id:paneTabbar
         anchors.fill:parent
         background: Rectangle{
             color:"transparent"
@@ -49,13 +51,18 @@ Item{
         property TabBarItem defaultItem: selectivePaneItem
     }
 
-    Component.onCompleted: {
-        internal.defaultItem.selected=true
-    }
-
     function changeCurrentItem(item){
         root.currentItem.selected=false
         root.currentItem=item
         root.currentItem.selected=true
     }
+
+    Component.onCompleted: {
+        internal.defaultItem.selected=true
+        operationTrackList.push(function(){
+            PageNavLogicWithMain.switchPage(storePage,sidebar.storeItem,false)
+            PageNavLogic.switchPage(selectivePane,internal.defaultItem,false)
+        })
+    }
+
 }

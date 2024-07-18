@@ -37,7 +37,6 @@ WrapFlickable{
         height: parent.height-50
         RowLayout{
             Layout.preferredHeight: 195
-            Layout.fillWidth: true
             spacing: 35
 
             RoundImage{

@@ -28,21 +28,23 @@ import "storePage"
 
 ApplicationWindow{
     id:window
+    property var operationTrackList:[]
+
     visible: true
     title: qsTr("网易云音乐")
     minimumHeight: 782
     minimumWidth: 1056
     height: 782
     width: 1056
-    property var operationTrackList
     background: Rectangle{
         anchors.fill: parent
         color:Style.colorMainBackground
     }
+
     Component.onCompleted: {
         windowAgent.setup(window)
         window.visible = true
-        console.log("xxx : ("+MusicController.albumDetail.album)
+        console.log("mainWindow completed")
     }
 
     WindowAgent {
@@ -145,60 +147,58 @@ ApplicationWindow{
         y:(window.height-height)/2
     }
 
-    Component{
+    PlaylistDetailPage{
+        visible:false
         id:playListDetailPage
-        PlaylistDetailPage{
-        }
     }
-    Component{
+    MessageCenterPage{
+        visible:false
         id:messageCenterPage
-        MessageCenterPage{
-        }
     }
-    Component{
+    SettingPage{
+        visible:false
         id:settingPage
-        SettingPage{
+        Component.onCompleted: {
+            console.log("settingPage completed")
         }
     }
-    Component{
+    ChangeSkinPage{
+        visible:false
         id:changeSkinPage
-        ChangeSkinPage{
+        Component.onCompleted: {
+            console.log("changeSkinPage completed")
         }
     }
-    Component{
+    StorePage{
+        visible:false
         id:storePage
-        StorePage{
+        Component.onCompleted: {
+            console.log("storePage completed")
         }
     }
-    Component{
+    PodcastPage{
+        visible:false
         id:podcastPage
-        PodcastPage{
-        }
     }
-    Component{
+    CommunityPage{
+        visible:false
         id:communityPage
-        CommunityPage{
-        }
     }
-    Component{
+    FavoritePage{
+        visible:false
         id:favoritePage
-        FavoritePage{
-        }
     }
-    Component{
+    RecentPage{
+        visible:false
         id:recentPage
-        RecentPage{
-        }
     }
-    Component{
+    DownloadManagerPage{
+        visible:false
         id:downloadManagerPage
-        DownloadManagerPage{
-        }
     }
-    Component{
+    LocalMusicPage{
+        visible:false
         id:localMusicPage
-        LocalMusicPage{
-        }
     }
 
     function loadPlaylistDetailPage(id){
@@ -211,13 +211,13 @@ ApplicationWindow{
     }
 
     function loadPageFromSideBar(page, sidebarItem, doSamePageCheck = true) {
-        if (doSamePageCheck && PageNavLogic.checkIfNewPageIsTheSameAsOld(
+     /*   if (doSamePageCheck && PageNavLogic.checkIfNewPageIsTheSameAsOld(
                     sidebarItem))
             return
 
         if (!PageNavLogic.terminateActionOfCurrentPage(page, sidebarItem))
             return
-
+    */
         PageNavLogic.switchPage(page, sidebarItem)
     }
 

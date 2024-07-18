@@ -7,8 +7,12 @@ function terminateActionOfCurrentPage(page, sidebarItem) {
     return true
 }
 
-function switchPage(page, sidebarItem=null) {
+function switchPage(page, sidebarItem=null,isTrack=true) {
+    if(pageManager.currentItem===page)
+        return
+    pageManager.currentItem.visible=false
     pageManager.replace(page)
+    page.visible=true
     if(sidebarItem!==null){
         sidebar.changeSelectedItem(sidebarItem)
     }
@@ -19,5 +23,24 @@ function switchPage(page, sidebarItem=null) {
         sidebar.currentItem.selected=false
         sidebar.currentItem = null
     }
+    if(isTrack){
+        pushOperation(function(){
+            switchPage(page,sidebarItem,false)
+        })
+    }
 }
+
+function pushOperation(func){
+    window.operationTrackList.push(func)
+}
+
+function prevOperation(){
+    let length=window.operationTrackList.length
+    if(length<=1) return
+    window.operationTrackList.pop()
+    const operation=window.operationTrackList[length-2]
+    operation()
+}
+
+
 
