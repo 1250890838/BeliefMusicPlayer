@@ -3,17 +3,17 @@ function checkIfNewPageIsTheSameAsOld(item) {
 }
 
 function switchPage(page, tabbarItem,isTrack=true) {
-    if(paneManager.currentItem===page)
+    if(paneManager.currentItem===page){
+        console.log ("21232131")
         return
+    }
     paneManager.currentItem.visible=false
     paneManager.replace(page)
     page.visible=true
-    console.log(`tabbar object : ` + tabbar)
-    console.log(`paneManager object :` + paneManager)
     tabbar.changeCurrentItem(tabbarItem)
     if(isTrack){
         window.operationTrackList.push(function(){
-            window.loadPageFromSideBar(storePage,null,false)
+            window.loadPageFromSideBar(storePage,sidebar.storeItem,false)
             switchPage(page,tabbarItem,false)
         })
     }

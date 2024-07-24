@@ -44,7 +44,6 @@ ApplicationWindow{
     Component.onCompleted: {
         windowAgent.setup(window)
         window.visible = true
-        console.log("mainWindow completed")
     }
 
     WindowAgent {
@@ -218,7 +217,7 @@ ApplicationWindow{
         if (!PageNavLogic.terminateActionOfCurrentPage(page, sidebarItem))
             return
     */
-        PageNavLogic.switchPage(page, sidebarItem)
+        PageNavLogic.switchPage(page, sidebarItem,doSamePageCheck)
     }
 
 }
