@@ -5,6 +5,7 @@ import QtQuick.Controls
 import Belief.controllers 1.0
 import Belief.icons 1.0
 import Belief.style 1.0
+import CustomComponents
 
 Popup{
      id:root
@@ -19,11 +20,12 @@ Popup{
          ColumnLayout{
             id:column
             anchors.fill: parent
-            anchors.margins: 25
+            spacing: 0
             Row{
                 spacing: 200
-                Layout.preferredHeight: 100
+                Layout.preferredHeight: 50
                 Layout.fillWidth:true
+                Layout.margins: 25
                 Label{
                     id:listLabel
                     text: qsTr("播放列表")
@@ -51,8 +53,10 @@ Popup{
                 id:listView
                 Layout.fillWidth: true
                 Layout.fillHeight: true
+                clip: true
                 model:MusicController.playbackListModel
                 boundsBehavior:Flickable.StopAtBounds
+                ScrollBar.vertical: ScrollBar { }
                 delegate: PlaybackListItem{
                     index:model.index
                 }

@@ -1,13 +1,21 @@
 import QtQuick
 import QtQuick.Controls
 import Belief.controllers 1.0
+import Belief.style
 import CustomComponents
 
 Pane{
     id:root
     property int index
+    hoverEnabled: true
     background:Rectangle{
-        color: root.index === PlaybackController.currentPlayIndex ? "red" : "transparent"
+        color: {
+            if(root.hovered){
+                return Style.colorPlaylistItemSelectedBackground
+            }else{
+                return root.index === PlaybackController.currentPlayIndex ? Style.colorPlaylistItemSelectedBackground : "transparent"
+            }
+        }
     }
 
     function getTime(time : int) {
@@ -19,7 +27,6 @@ Pane{
         }
         return `${h.padStart(2,'0')}:${m.padStart(2,'0')}:${s.padStart(2, '0')}`
     }
-
     Row{
         RoundImage{
             id:roundImage
@@ -27,13 +34,20 @@ Pane{
             width:50
             height:50
         }
+        Item{
+            id:spacer1
+            width:10
+            height:20
+        }
         Text{
             id:name
             text:model.name
+            width: 220
+            elide: Text.ElideRight
         }
         Item{
-            id:spacer
-            width:100
+            id:spacer2
+            width:5
             height:20
         }
         Text{

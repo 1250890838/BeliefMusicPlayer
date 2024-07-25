@@ -87,7 +87,7 @@ WrapFlickable{
 
         Rectangle{
             color:"transparent"
-            width: parent.width
+            Layout.fillWidth: true
             height: 65
             RowLayout{
                 anchors.fill: parent

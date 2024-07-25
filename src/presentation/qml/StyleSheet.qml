@@ -27,6 +27,7 @@ Item {
     property color colorSideBarItemText: "#576071"
 
     property color colorTitlebarButtonBorder: "#E2E5E9"
+    property color colorPlaylistItemSelectedBackground: "#EDEEEF"
 
     property var gradientSearchBox: Gradient{
         orientation: Gradient.Horizontal
