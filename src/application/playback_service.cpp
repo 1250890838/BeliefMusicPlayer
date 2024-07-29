@@ -23,8 +23,12 @@ void PlaybackService::setVolume(float volume){
     m_audioOutput.setVolume(volume);
 }
 
-void PlaybackService::playNewSong(){
-    m_playbackCurrentIndex=m_playBackList->size()-1;
+void PlaybackService::playNewSong(long long id){
+    for(int i=m_playBackList->size()-1;i>=0;i--){
+        if(m_playBackList->at(i).id==id){
+            m_playbackCurrentIndex=i;
+        }
+    }
     this->setSource(m_playBackList->at(m_playbackCurrentIndex).url);
     emit currentPlayIndexChanged(m_playbackCurrentIndex);
 }

@@ -23,9 +23,13 @@ Popup{
             spacing: 0
             Row{
                 spacing: 200
+                padding: 0
                 Layout.preferredHeight: 50
                 Layout.fillWidth:true
-                Layout.margins: 25
+                Layout.topMargin: 15
+                Layout.leftMargin: 15
+                Layout.rightMargin: 15
+                Layout.bottomMargin: 0
                 Label{
                     id:listLabel
                     text: qsTr("播放列表")
@@ -49,18 +53,43 @@ Popup{
                 }
             }
 
-            ListView{
-                id:listView
+            WrapFlickable{
+                id:wrapFlickable
                 Layout.fillWidth: true
                 Layout.fillHeight: true
-                clip: true
-                model:MusicController.playbackListModel
-                boundsBehavior:Flickable.StopAtBounds
-                ScrollBar.vertical: ScrollBar { }
-                delegate: PlaybackListItem{
-                    index:model.index
+                contentHeight:layout.implicitHeight
+                ColumnLayout{
+                    id:layout
+                    Layout.fillHeight: true
+                    Layout.fillWidth: true
+                    Layout.alignment: Qt.AlignHCenter
+                    Repeater{
+                        id:repeater
+                        model:MusicController.playbackListModel
+                        delegate:
+                            PlaybackListItem{
+                                                index:model.index
+                                            }
+                    }
                 }
             }
+
+            /*
+            ScrollView{
+                Layout.fillWidth: true
+                Layout.fillHeight: true
+                ScrollBar.vertical.policy: ScrollBar.AlwaysOn
+                ListView{
+                    id:listView
+                    clip: true
+                    model:MusicController.playbackListModel
+                    boundsBehavior:Flickable.StopAtBounds
+                    delegate: PlaybackListItem{
+                        index:model.index
+                    }
+                }
+            }
+            */
          }
      }
 

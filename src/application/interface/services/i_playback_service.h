@@ -25,7 +25,7 @@ public:
     virtual void playPreviousSong() = 0;
     virtual int currentPlayIndex() = 0;
 public slots:
-    virtual void playNewSong() = 0;
+    virtual void playNewSong(long long id) = 0;
 signals:
     void volumeChanged();
     void currentPlayIndexChanged(int);

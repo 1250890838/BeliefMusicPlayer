@@ -7,7 +7,7 @@ import CustomComponents
 
 Item {
     id:root
-    implicitHeight: 90
+    implicitHeight: 65
     property alias albumWidth:albumRect.width
     property alias nameWidth:nameRect.width
 

@@ -7,6 +7,7 @@ import CustomComponents
 Pane{
     id:root
     property int index
+    implicitHeight: 70
     hoverEnabled: true
     background:Rectangle{
         color: {

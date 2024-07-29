@@ -32,7 +32,7 @@ signals:
     void newAlbumDesc(const QString&);
     void newAlbumCreatorName(const QString&);
     void newAlbumCreatorImgUrl(const QUrl&);
-    void playNewSong();
+    void playNewSong(long long id);
 };
 }
 #endif // IMUSICSERVICE_H

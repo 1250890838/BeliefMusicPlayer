@@ -29,6 +29,19 @@ void MusicService::getPlaylistDetail(long long id){
 }
 
 void MusicService::getSongUrl(long long id){
+
+    /*
+     * 先检查播放列表是否已经有了一样的歌曲
+     * 有的话播放该首歌曲
+     * 没有的话即从网络中获取该歌曲并插入播放列表末端
+    */
+    for(const auto& song:m_playBackList){
+        if(song.id==id){
+            emit playNewSong(id);
+            return;
+        }
+    }
+
     m_gateway->getSongUrl(id);
 }
 
@@ -53,7 +66,7 @@ void MusicService::processSongUrl(long long id,const QUrl& url){
             temp.url=url;
             m_playBackList.append(temp);
             emit playSongInsertionEnded();
-            emit playNewSong();
+            emit playNewSong(id);
             break;
         }
     }

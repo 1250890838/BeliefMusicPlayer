@@ -18,23 +18,10 @@ WrapFlickable{
     id:root
     contentHeight:layout.implicitHeight
     property var dataSet: MusicController.albumDetail
-    Rectangle{
-        radius:10
-        anchors.fill: parent
-        color:"transparent"
-        /*
-        gradient:Gradient{
-            orientation: Gradient.Vertical
-            GradientStop { position: 0.0; color: "#F8E5E4" }
-            GradientStop { position: 0.5; color: "#FFFFFF" }
-        }
-        */
-    }
     ColumnLayout{
         id:layout
         anchors.centerIn: parent
         width: parent.width/1.3
-        height: parent.height-50
         RowLayout{
             Layout.preferredHeight: 195
             spacing: 35

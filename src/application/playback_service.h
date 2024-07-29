@@ -19,7 +19,7 @@ public:
     virtual PlaybackMode playbackMode() override;
 public slots:
     void setVolume(float volume) override;
-    virtual void playNewSong() override;
+    virtual void playNewSong(long long id) override;
     virtual void playPreviousSong() override;
     virtual void playNextSong() override;
     virtual int currentPlayIndex() override;
