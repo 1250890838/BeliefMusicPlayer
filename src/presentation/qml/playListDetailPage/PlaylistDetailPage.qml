@@ -24,6 +24,7 @@ WrapFlickable{
         width: parent.width/1.3
         RowLayout{
             Layout.preferredHeight: 195
+            Layout.fillWidth: true
             spacing: 35
 
             RoundImage{
@@ -117,8 +118,7 @@ WrapFlickable{
                 PlayListItem{
                     id:playListItem
                     index:model.index
-                    width: layout.width
-                    height: 90
+                    Layout.fillWidth: true
                 }
         }
     }
