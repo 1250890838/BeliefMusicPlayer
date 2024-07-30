@@ -4,8 +4,10 @@ function checkIfNewPageIsTheSameAsOld(item) {
 
 function switchPage(page, tabbarItem,isTrack=true) {
     if(paneManager.currentItem===page){
-        console.log ("21232131")
         return
+    }
+    if(page===selectivePane){
+        selectivePane.refresh()
     }
     paneManager.currentItem.visible=false
     paneManager.replace(page)

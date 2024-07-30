@@ -3,6 +3,11 @@
 #include <QRandomGenerator>
 namespace application{
 PlaybackService::PlaybackService():m_playbackCurrentIndex(-1){
+    /*
+     * 播放状态改变时
+     * 如果加载完毕 直接播放新加载好的歌曲
+     * 如果已播放到歌曲的末尾 播放下一首歌曲
+    */
     connect(this,&PlaybackService::mediaStatusChanged,this,[this](QMediaPlayer::MediaStatus status){
         if(status==QMediaPlayer::LoadedMedia){
             this->play();

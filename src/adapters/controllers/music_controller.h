@@ -9,6 +9,10 @@
 
 #include "adapters_export.hpp"
 
+/*
+ * 目前 这个类主要是提供网络歌曲及歌单的获取功能
+ * 还有 持有播放列表的数据 ？ 后面可能要把播放列表的数据分离出来
+*/
 namespace adapters{
 class MusicController : public IMusicController
 {

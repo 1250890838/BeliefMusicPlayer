@@ -52,7 +52,10 @@ WrapFlickable{
             }
         }
     }
-    Component.onCompleted: {
+    function refresh(){
         MusicController.getSelectiveAlbum()
+    }
+    Component.onCompleted: {
+        refresh()
     }
 }
