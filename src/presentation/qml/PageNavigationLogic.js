@@ -13,6 +13,9 @@ function switchPage(page, sidebarItem=null,isTrack=true) {
     pageManager.currentItem.visible=false
     pageManager.replace(page)
     page.visible=true
+    if(page===localMusicPage){
+        localMusicPage.refresh()
+    }
     if(sidebarItem!==null){
         sidebar.changeSelectedItem(sidebarItem)
     }

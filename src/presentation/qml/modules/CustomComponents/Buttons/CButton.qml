@@ -16,12 +16,13 @@ Item {
     property bool unenabled
     property size sourceSize:Qt.size(20,20)
     property string toolTipText
+    property real radius: 5
     signal clicked();
     Rectangle{
         opacity:mouseArea.containsMouse ? 1 :0.9
         anchors.fill: parent
         color: mouseArea.containsMouse ? root.backgroundHovered : root.background
-        radius: 5
+        radius: root.radius
         border{
             width:root.borderWidth
             color: root.borderColor

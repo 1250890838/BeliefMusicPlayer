@@ -6,6 +6,9 @@ add_library(application SHARED
     music_service.h music_service.cpp
     playback_service.h playback_service.cpp
     interface/services/i_playback_service.h
+    interface/services/i_local_music_service.h
+    interface/gateways/i_local_music_gateway.h
+    local_music_service.h local_music_service.cpp
 
 )
 

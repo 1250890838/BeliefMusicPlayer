@@ -20,7 +20,6 @@ public:
     virtual void getSelectiveAlbum() override;
     virtual void getPlayListDetail(long long id) override;
     virtual void getSongUrl(long long id) override;
-    virtual model::SongsModel* getPlaybackListModel() override;
     virtual model::AlbumsModel* getSelectiveAlbumsModel() override;
     virtual model::AlbumDetail* getAlbumDetail() override;
     explicit MusicController(application::IMusicService* service);
@@ -30,7 +29,6 @@ private:
     application::IMusicService* m_service;
     model::AlbumsModel m_selectiveAlbumsModel;
     model::AlbumDetail m_albumDetail;
-    model::SongsModel m_playbackListModel;
 };
 }
 #endif // MUSICCONTROLLER_H

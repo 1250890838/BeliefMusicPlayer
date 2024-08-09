@@ -1,7 +1,10 @@
 #include "playback_controller.h"
 
 namespace adapters{
-PlaybackController::PlaybackController(application::IPlaybackService* service):m_service(service){
+PlaybackController::PlaybackController(application::IPlaybackService* service):
+    m_service(service),
+    m_playbackListModel(m_service->getPlaylistUndelyData()){
+
     connect(m_service,&application::IPlaybackService::playbackStateChanged,this,
             [this](application::IPlaybackService::PlaybackState state){
                 emit playbackStateChanged(static_cast<PlaybackController::PlaybackState>(state));
@@ -12,6 +15,10 @@ PlaybackController::PlaybackController(application::IPlaybackService* service):m
             this,&PlaybackController::positionChanged);
     connect(m_service,&application::IPlaybackService::currentPlayIndexChanged,
             this,&PlaybackController::currentPlayIndexChanged);
+    connect(m_service,&application::IPlaybackService::newSongInsertionBegin,
+            &m_playbackListModel,&model::SongsModel::startInsertingRow);
+    connect(m_service,&application::IPlaybackService::newSongInsertionEnd,
+            &m_playbackListModel,&model::SongsModel::endInsertingRow);
 }
 
 PlaybackController::PlaybackMode PlaybackController::playbackMode() const{

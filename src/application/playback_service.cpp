@@ -28,18 +28,24 @@ void PlaybackService::setVolume(float volume){
     m_audioOutput.setVolume(volume);
 }
 
-void PlaybackService::playNewSong(long long id){
-    for(int i=m_playBackList->size()-1;i>=0;i--){
-        if(m_playBackList->at(i).id==id){
+void PlaybackService::onSongRequiredFinished(domain::Song song){
+    // 判断歌曲id是否在播放列表已存在
+    // 若存在直接重新播放即可
+    for(int i=0;i<m_playBackList.size();i++){
+        if(m_playBackList[i].id==song.id){
             m_playbackCurrentIndex=i;
+            goto set_source_and_emit_play_index_changed;
         }
     }
-    this->setSource(m_playBackList->at(m_playbackCurrentIndex).url);
-    emit currentPlayIndexChanged(m_playbackCurrentIndex);
-}
 
-void PlaybackService::setPlaybackList(QVector<domain::Song>* songs){
-    m_playBackList=songs;
+    emit newSongInsertionBegin(m_playBackList.size());
+    m_playBackList.append(song);
+    emit newSongInsertionEnd();
+    m_playbackCurrentIndex=m_playBackList.size()-1;
+
+set_source_and_emit_play_index_changed:
+    this->setSource(m_playBackList.at(m_playbackCurrentIndex).url);
+    emit currentPlayIndexChanged(m_playbackCurrentIndex);
 }
 
 void PlaybackService::setPlaybackMode(PlaybackMode playbackMode){
@@ -57,7 +63,7 @@ PlaybackService::PlaybackMode PlaybackService::playbackMode(){
 }
 
 int PlaybackService::shuffleNextSongIndex(){
-    return QRandomGenerator::global()->bounded(m_playBackList->size()-1);
+    return QRandomGenerator::global()->bounded(m_playBackList.size()-1);
 }
 
 void PlaybackService::playPreviousSong(){
@@ -67,7 +73,7 @@ void PlaybackService::playPreviousSong(){
     else if(m_playbackMode==ListLoop){
         m_playbackCurrentIndex--;
         if(m_playbackCurrentIndex<0){
-            m_playbackCurrentIndex=m_playBackList->size()-1;
+            m_playbackCurrentIndex=m_playBackList.size()-1;
         }
     }
     else if(m_playbackMode==SingleLoop){
@@ -75,10 +81,10 @@ void PlaybackService::playPreviousSong(){
     else if(m_playbackMode==Sequential){
         m_playbackCurrentIndex--;
         if(m_playbackCurrentIndex<0){
-            m_playbackCurrentIndex=m_playBackList->size()-1;
+            m_playbackCurrentIndex=m_playBackList.size()-1;
         }
     }
-    this->setSource(m_playBackList->at(m_playbackCurrentIndex).url);
+    this->setSource(m_playBackList.at(m_playbackCurrentIndex).url);
     emit currentPlayIndexChanged(m_playbackCurrentIndex);
 }
 
@@ -88,7 +94,7 @@ void PlaybackService::playNextSong(){
     }
     else if(m_playbackMode==ListLoop){
         m_playbackCurrentIndex++;
-        if(m_playbackCurrentIndex==m_playBackList->size()){
+        if(m_playbackCurrentIndex==m_playBackList.size()){
             m_playbackCurrentIndex=0;
         }
     }
@@ -96,15 +102,19 @@ void PlaybackService::playNextSong(){
     }
     else if(m_playbackMode==Sequential){
         m_playbackCurrentIndex++;
-        if(m_playbackCurrentIndex==m_playBackList->size()){
+        if(m_playbackCurrentIndex==m_playBackList.size()){
             m_playbackCurrentIndex=0;
         }
     }
-    this->setSource(m_playBackList->at(m_playbackCurrentIndex).url);
+    this->setSource(m_playBackList.at(m_playbackCurrentIndex).url);
     emit currentPlayIndexChanged(m_playbackCurrentIndex);
 }
 
 int PlaybackService::currentPlayIndex(){
     return m_playbackCurrentIndex;
+}
+
+QVector<domain::Song>* PlaybackService::getPlaylistUndelyData(){
+    return &m_playBackList;
 }
 }

@@ -12,6 +12,7 @@ struct Song{
     QString name;
     long long duration;
     QUrl url;
+    long long fileSize;
 };
 }
 #endif // SONG_H

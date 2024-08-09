@@ -11,7 +11,6 @@ class MusicService : public IMusicService
     Q_OBJECT
 public:
     explicit MusicService(IMusicGateway* gateway);
-    virtual QVector<domain::Song>& getPlaybackListUndelyData() override;
     virtual QVector<domain::Album>& getSelectiveAlbumsUndelyData() override;
     virtual QVector<domain::Song>& getPlaylistDetailUndelyData() override;
 
@@ -30,7 +29,7 @@ private:
 
     QVector<domain::Album> m_selectiveAlbums; // 精选歌单
     QVector<domain::Song> m_playListDetail; // 歌单详情
-    QVector<domain::Song> m_playBackList; // 播放列表
+   // QVector<domain::Song> m_playBackList; // 播放列表
 signals:
 
 };

@@ -32,6 +32,7 @@ qt_add_executable(Belief
     dependency_injection.h
 )
 
+#[[
 target_include_directories(Belief
     PRIVATE
     ${APPLICATION_INCLUDES}
@@ -39,6 +40,8 @@ target_include_directories(Belief
     ${INFRASTRUCTURE_INCLUDES}
     ${DOMAIN_INCLUDES}
 )
+]]
+
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
 # If you are developing for iOS or macOS you should consider setting an

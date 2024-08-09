@@ -4,10 +4,15 @@
 #include <QJsonObject>
 #include <QJsonArray>
 #include <QVariant>
+#include <QDebug>
+#include <iostream>
 
 #include "album.h"
 #include "song.h"
+#include <tpropertymap.h>
 
+using namespace TagLib;
+using namespace std;
 namespace adapters {
 MusicGateway::MusicGateway(IMusicAccess* access):m_access(access){
     connect(m_access,&IMusicAccess::getSelectiveAlbumFinished,this,&MusicGateway::processSelectiveAlbum);

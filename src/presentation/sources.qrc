@@ -87,5 +87,7 @@
         <file>qml/modules/CustomComponents/Checkbox/CCheckBox.qml</file>
         <file>qml/modules/CustomComponents/RoundImage.qml</file>
         <file>qml/modules/CustomComponents/WrapFlickable.qml</file>
+        <file>qml/localMusicPage/LocalMusicPlayItem.qml</file>
+        <file>qml/localMusicPage/LocalMusicFunctionalBar.qml</file>
     </qresource>
 </RCC>

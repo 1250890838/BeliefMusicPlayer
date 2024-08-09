@@ -65,7 +65,7 @@ Popup{
                     Layout.alignment: Qt.AlignHCenter
                     Repeater{
                         id:repeater
-                        model:MusicController.playbackListModel
+                        model:PlaybackController.playbackListModel
                         delegate:
                             PlaybackListItem{
                                                 index:model.index

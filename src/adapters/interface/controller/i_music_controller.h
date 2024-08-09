@@ -11,8 +11,6 @@ class ADAPTERS_EXPORT IMusicController : public QObject{
     Q_OBJECT
     Q_PROPERTY(model::AlbumsModel * selectiveAlbumsModel READ
                    getSelectiveAlbumsModel CONSTANT)
-    Q_PROPERTY(model::SongsModel * playbackListModel READ
-                   getPlaybackListModel CONSTANT)
     Q_PROPERTY(model::AlbumDetail* albumDetail READ
                    getAlbumDetail CONSTANT)
 public:
@@ -20,7 +18,6 @@ public:
     Q_INVOKABLE virtual void getPlayListDetail(long long id) = 0;
     Q_INVOKABLE virtual void getSongUrl(long long id) = 0;
     virtual model::AlbumsModel* getSelectiveAlbumsModel() = 0;
-    virtual model::SongsModel* getPlaybackListModel() = 0;
     virtual model::AlbumDetail* getAlbumDetail() = 0;
 public:
     virtual ~IMusicController() noexcept = default;

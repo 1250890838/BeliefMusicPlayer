@@ -13,7 +13,8 @@ QHash<int, QByteArray> SongsModel::roleNames() const{
     roles[DtRole] = "duration";
     roles[UrlRole] = "url";
     roles[NameRole] = "name";
-    roles[AlPicUrlRole]= "picUrl";
+    roles[AlPicUrlRole] = "picUrl";
+    roles[FileSizeRole] = "fileSize";
     return roles;
 }
 
@@ -45,6 +46,8 @@ QVariant SongsModel::data(const QModelIndex & index, int role) const{
         return QVariant::fromValue(song.name);
     case AlPicUrlRole:
         return QVariant::fromValue(song.albumPicUrl);
+    case FileSizeRole:
+        return QVariant::fromValue(song.fileSize);
     default:
         return QVariant();
         break;
@@ -56,6 +59,14 @@ void SongsModel::startInsertingRow(int index){
 }
 
 void SongsModel::endInsertingRow(){
+    endInsertRows();
+}
+
+void SongsModel::startInsertingRows(int begin,int end){
+    beginInsertRows(QModelIndex(),begin,end);
+}
+
+void SongsModel::endInsertingRows(){
     endInsertRows();
 }
 

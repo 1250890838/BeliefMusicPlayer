@@ -3,6 +3,7 @@ import QtQuick.Controls
 import QtQuick.Layouts
 import Belief.icons
 import Belief.controllers
+import Belief.style
 import CustomComponents
 
 Item {
@@ -17,6 +18,7 @@ Item {
     property string albumName:model.album
     property int duration:model.duration
     property string albumPicUrl:model.picUrl
+    property string artistsName: model.artists
     function getTime(time : int) {
         const h = Math.floor(time / 3600000).toString()
         const m = Math.floor(time / 60000).toString()
@@ -44,15 +46,17 @@ Item {
                 sourceSize:Qt.size(24,24)
                 onClicked:{
                     MusicController.getSongUrl(root.iid)
+                    console.log(root.name)
                 }
             }
             Label{
                 id:index
                 text:root.index
-                Layout.preferredWidth: 30
+                Layout.preferredWidth: 24
                 horizontalAlignment: Text.AlignLeft
                 visible: !mouseArea.containsMouse
                 font.pointSize: 11
+                color: Style.colorLocalMusicText
             }
             RoundImage{
                 id:roundImage
@@ -65,15 +69,21 @@ Item {
                 id:nameRect
                 Layout.fillWidth: true
                 Layout.fillHeight: true
-                color:"transparent"
-                Label{
-                    id:name
-                    text:root.name
-                    anchors.fill: parent
-                    elide:Text.ElideRight
-                    horizontalAlignment: Text.AlignLeft
-                    verticalAlignment: Text.AlignVCenter
-                    font.pointSize: 11
+                color:"red"
+                Column{
+                    Label{
+                        id:name
+                        text:root.name
+                        elide:Text.ElideRight
+                        font.pointSize: 11
+                        color: Style.colorLocalMusicText
+                    }
+                    Label{
+                        id:artists
+                        text:root.artistsName
+                        color: Style.colorLocalMusicText
+                        font.pointSize: 9.5
+                    }
                 }
             }
             Rectangle{
@@ -89,6 +99,7 @@ Item {
                     horizontalAlignment: Text.AlignLeft
                     verticalAlignment: Text.AlignVCenter
                     font.pointSize: 11
+                    color: Style.colorLocalMusicText
                 }
             }
             Label{
@@ -96,6 +107,7 @@ Item {
                 text:root.getTime(root.duration)
                 horizontalAlignment: Text.AlignLeft
                 font.pointSize: 11
+                color: Style.colorLocalMusicText
             }
         }
     }

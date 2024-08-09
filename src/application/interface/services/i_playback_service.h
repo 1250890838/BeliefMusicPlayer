@@ -18,17 +18,19 @@ public:
     virtual ~IPlaybackService() noexcept = default;
     virtual float volume() const = 0;
     virtual void setVolume(float) = 0;
-    virtual void setPlaybackList(QVector<domain::Song>*) = 0;
     virtual PlaybackMode playbackMode() = 0;
     virtual void setPlaybackMode(PlaybackMode) = 0;
     virtual void playNextSong() = 0;
     virtual void playPreviousSong() = 0;
     virtual int currentPlayIndex() = 0;
+    virtual QVector<domain::Song>* getPlaylistUndelyData() = 0;
 public slots:
-    virtual void playNewSong(long long id) = 0;
+    virtual void onSongRequiredFinished(domain::Song) = 0;
 signals:
     void volumeChanged();
     void currentPlayIndexChanged(int);
+    void newSongInsertionBegin(int);
+    void newSongInsertionEnd();
 };
 }
 #endif // I_PLAYBACK_SERVICE_H

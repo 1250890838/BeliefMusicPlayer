@@ -14,22 +14,22 @@ class PlaybackService : public IPlaybackService
 public:
     explicit PlaybackService();
     virtual float volume() const override;
-    virtual void setPlaybackList(QVector<domain::Song>*) override;
     virtual void setPlaybackMode(PlaybackMode) override;
     virtual PlaybackMode playbackMode() override;
 public slots:
     void setVolume(float volume) override;
-    virtual void playNewSong(long long id) override;
+    virtual void onSongRequiredFinished(domain::Song) override;
     virtual void playPreviousSong() override;
     virtual void playNextSong() override;
     virtual int currentPlayIndex() override;
+    virtual QVector<domain::Song>* getPlaylistUndelyData() override;
 private:
     int shuffleNextSongIndex();
 private:
     int m_playbackCurrentIndex;
     PlaybackMode m_playbackMode;
     QAudioOutput m_audioOutput;
-    QVector<domain::Song> *m_playBackList; // 播放列表
+    QVector<domain::Song> m_playBackList;
 };
 }
 #endif // PLAYBACKSERVICE_H

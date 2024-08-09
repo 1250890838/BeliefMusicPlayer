@@ -20,17 +20,20 @@ public:
         AlPicUrlRole,
         DtRole,
         UrlRole,
-        NameRole
+        NameRole,
+        FileSizeRole
     };
 public:
     explicit SongsModel() = default;
     explicit SongsModel(QVector<domain::Song>* songs);
     int rowCount(const QModelIndex & parent = QModelIndex()) const;
     QVariant data(const QModelIndex & index, int role) const;
-    void clear();
 public slots:
     void startInsertingRow(int index);
+    void startInsertingRows(int begin,int end);
     void endInsertingRow();
+    void endInsertingRows();
+    void clear();
 protected:
     QHash<int, QByteArray> roleNames() const;
 private:

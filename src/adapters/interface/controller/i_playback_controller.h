@@ -16,6 +16,8 @@ public:
         Sequential
     };
     Q_ENUM(PlaybackMode)
+    Q_PROPERTY(model::SongsModel * playbackListModel READ
+                   getPlaybackListModel CONSTANT)
     Q_PROPERTY(float volume READ volume WRITE setVolume NOTIFY volumeChanged)
     Q_PROPERTY(QUrl source READ source WRITE setSource NOTIFY sourceChanged)
     Q_PROPERTY(PlaybackState playbackState READ playbackState NOTIFY playbackStateChanged)

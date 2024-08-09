@@ -84,6 +84,7 @@ WrapFlickable{
                     text:"#"
                     font.bold: true
                     font.pointSize: 11
+                    color: Style.colorLocalMusicText
                 }
                 Text{
                     id:headerTitle
@@ -91,6 +92,7 @@ WrapFlickable{
                     text:qsTr("标题")
                     font.bold: true
                     font.pointSize: 11
+                    color: Style.colorLocalMusicText
                 }
                 Text{
                     id:headerAlbum
@@ -98,12 +100,14 @@ WrapFlickable{
                     Layout.fillWidth: true
                     font.bold: true
                     font.pointSize: 11
+                    color: Style.colorLocalMusicText
                 }
                 Text{
                     id:headerDuration
                     text:qsTr("播放时间")
                     font.bold: true
                     font.pointSize: 11
+                    color: Style.colorLocalMusicText
                 }
             }
         }
@@ -121,5 +125,8 @@ WrapFlickable{
                     Layout.fillWidth: true
                 }
         }
+    }
+    Component.onCompleted: {
+        console.log("playListPage : width"+root.width+" "+"height:"+root.height)
     }
 }

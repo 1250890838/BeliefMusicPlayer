@@ -6,6 +6,11 @@
 #include "music_gateway.h"
 #include "playback_service.h"
 #include "playback_controller.h"
+#include "local_music_access.h"
+#include "local_music_gateway.h"
+#include "local_music_service.h"
+#include "local_music_controller.h"
+
 namespace di = boost::di;
 
 namespace config
@@ -31,7 +36,16 @@ const auto diConfig = []
         di::bind<IPlaybackController>()
             .to<PlaybackController>(),
         di::bind<IPlaybackService>()
-            .to<PlaybackService>()
+            .to<PlaybackService>(),
+        // LocalMusic
+        di::bind<ILocalMusicController>()
+            .to<LocalMusicController>(),
+        di::bind<ILocalMusicService>()
+            .to<LocalMusicService>(),
+        di::bind<ILocalMusicAccess>().
+            to<LocalMusicAccess>(),
+        di::bind<ILocalMusicGateway>().
+            to<LocalMusicGateway>()
         );
 
 };  // namespace config

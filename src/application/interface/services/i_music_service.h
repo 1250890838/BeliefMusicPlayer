@@ -11,7 +11,6 @@ class APPLICATION_EXPORT IMusicService : public QObject
 {
     Q_OBJECT
 public:
-    virtual QVector<domain::Song>& getPlaybackListUndelyData() = 0;
     virtual QVector<domain::Album>& getSelectiveAlbumsUndelyData() = 0;
     virtual QVector<domain::Song>& getPlaylistDetailUndelyData() = 0;
     virtual ~IMusicService() noexcept = default;
@@ -23,16 +22,14 @@ public:
 signals:
     void albumInsertionStarted(int index);
     void albumInsertionEnded();
-    void playSongInsertionStarted(int index);
-    void playSongInsertionEnded();
-    void songInsertionStarted(int index);
-    void songInsertionEnded();
+    void songRequiredFinshed(domain::Song);
     void newAlbumName(const QString&);
     void newAlbumCoverImgUrl(const QUrl&);
     void newAlbumDesc(const QString&);
     void newAlbumCreatorName(const QString&);
     void newAlbumCreatorImgUrl(const QUrl&);
-    void playNewSong(long long id);
+    void songInsertionStarted(int index);
+    void songInsertionEnded();
 };
 }
 #endif // IMUSICSERVICE_H

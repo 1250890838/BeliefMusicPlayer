@@ -11,8 +11,15 @@ add_library(adapters SHARED
     controllers/playback_controller.h controllers/playback_controller.cpp
     interface/controller/i_playback_controller.h
     models/albumdetail_valueobject.h
-    models/albumdetail_valueobject.cpp)
+    models/albumdetail_valueobject.cpp
+    interface/persistance/i_local_music_access.h
+    interface/persistance/i_local_music_access.h
+    gateways/local_music_gateway.h gateways/local_music_gateway.cpp
+    interface/controller/i_local_music_controller.h
+    controllers/local_music_controller.h controllers/local_music_controller.cpp
+)
 
+find_package(Taglib 2.0.1 REQUIRED)
 target_compile_definitions(adapters PRIVATE ADAPTERS_LIBRARY)
 
 target_include_directories(adapters
@@ -24,9 +31,11 @@ target_include_directories(adapters
                 ${CMAKE_CURRENT_SOURCE_DIR}/controllers
                 ${CMAKE_CURRENT_SOURCE_DIR}/gateways
                 PRIVATE
+                ${PROJECT_BINARY_DIR}
                 ${APPLICATION_INCLUDES}
                 ${DOMAIN_INCLUDES}
             )
+
 
 target_link_libraries(adapters
                 PRIVATE
@@ -36,8 +45,11 @@ target_link_libraries(adapters
                     Qt6::Multimedia
                     application
                     domain
+                    TagLib::tag
 )
 target_compile_definitions(adapters
                 PRIVATE
                     $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>
+                    TAGLIB_STATIC
 )
+message(${CMAKE_PREFIX_PATH})

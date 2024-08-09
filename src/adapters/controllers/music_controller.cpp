@@ -5,7 +5,6 @@ namespace adapters{
 MusicController::MusicController(application::IMusicService* service):
     m_service(service),
     m_selectiveAlbumsModel(&m_service->getSelectiveAlbumsUndelyData()),
-    m_playbackListModel(&m_service->getPlaybackListUndelyData()),
     m_albumDetail(&m_service->getPlaylistDetailUndelyData())
 {
     connect(m_service,&application::IMusicService::albumInsertionStarted,
@@ -16,10 +15,6 @@ MusicController::MusicController(application::IMusicService* service):
             &m_albumDetail,&model::AlbumDetail::addNewSong);
     connect(m_service,&application::IMusicService::songInsertionEnded,
             &m_albumDetail,&model::AlbumDetail::addNewSongEnd);
-    connect(m_service,&application::IMusicService::playSongInsertionStarted,
-            &m_playbackListModel,&model::SongsModel::startInsertingRow);
-    connect(m_service,&application::IMusicService::playSongInsertionEnded,
-            &m_playbackListModel,&model::SongsModel::endInsertingRow);
     connect(m_service,&application::IMusicService::newAlbumName,
             &m_albumDetail,&model::AlbumDetail::setName);
     connect(m_service,&application::IMusicService::newAlbumCoverImgUrl,
@@ -48,10 +43,6 @@ void MusicController::getPlayListDetail(long long id){
 
 void MusicController::getSongUrl(long long id){
     m_service->getSongUrl(id);
-}
-
-model::SongsModel* MusicController::getPlaybackListModel(){
-    return &m_playbackListModel;
 }
 
 model::AlbumsModel* MusicController::getSelectiveAlbumsModel(){
